@@ -3,17 +3,17 @@
 one:
   customerNumber: MyString
   forename: MyString
-  surname: 
+  surname:
   email: MyString
   phone: MyString
-  password: MyString
-  d.o.b: 2020-11-17
+  password_digest: MyString
+  dob: 2020-11-17
 
 two:
   customerNumber: MyString
   forename: MyString
-  surname: 
+  surname:
   email: MyString
   phone: MyString
-  password: MyString
-  d.o.b: 2020-11-17
+  password_digest: MyString
+  dob: 2020-11-17
