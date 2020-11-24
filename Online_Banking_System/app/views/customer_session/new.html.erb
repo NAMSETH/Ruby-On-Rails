@@ -1,2 +1,6 @@
 <h1>Log in</h1>
-<%= bootstrpn_form_with
+<%= bootstrap_form_with(url: customer_login_path, scope: :session, local: true) do |f| %>
+  <%= f.text_field :email %>
+  <%= f.password_field :password %>
+  <%= f.submit "Log in", class: 'btn btn=primary' %>
+<% end %>
