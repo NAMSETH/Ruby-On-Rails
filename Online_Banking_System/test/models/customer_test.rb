@@ -18,6 +18,32 @@ class CustomerTest < ActiveSupport::TestCase
     assert_not @customer.valid?
   end
 
+  test "customerNumber should be unique" do
+    customer2 = @customer.dup
+    @customer.save
+    assert_not customer2.valid?
+  end
+
+  test "customerNumber should not be blank" do
+    @customer.customerNumber = " "
+    assert_not @customer.valid?
+  end
+
+  test "password should not be blank" do
+    @customer.password = @customer.password_confirmation = " "
+    assert_not @customer.valid?
+  end
+
+  test "password length should not be less than 8" do
+    @customer.password = @customer.password_confirmation = "1234567"
+    assert_not @customer.valid?
+  end
+
+  test "email should not be blank" do
+    @customer.email = " "
+    assert_not @customer.valid?
+  end
+
   test "user with all empty fields" do
     assert_not @empty_customer.valid?
   end
@@ -56,12 +82,6 @@ class CustomerTest < ActiveSupport::TestCase
     @customer.phone = "012020ss3kekw21@"
     assert_not @customer.valid?
   end
-
-  test "password too short" do
-    @customer.password = "12345"
-    assert_not @customer.valid?
-  end
-
 
   test "password too long" do
     @customer.password = "1234567890123"
