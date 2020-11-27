@@ -68,5 +68,14 @@ class CustomerTest < ActiveSupport::TestCase
     assert_not @customer.valid?
   end
 
+  test "forename is less than mimimum length" do
+    @customer.forename = "J"
+    assert_not @customer.valid?
+  end
+
+  test "surname is less than minimum length" do
+    @customer.surname = "H"
+    assert_not @customer.valid?
+  end
 
 end
