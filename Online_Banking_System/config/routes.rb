@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   # get 'customers/update'
   # get 'customers/edit'
   # get 'customers/delete'
-  # get 'customers/destroy'
+  # get 'customers/destroy' 1 conflict
 
   resources :customers
 
