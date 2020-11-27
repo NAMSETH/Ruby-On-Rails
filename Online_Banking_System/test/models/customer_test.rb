@@ -12,4 +12,46 @@ class CustomerTest < ActiveSupport::TestCase
     @customer.password = "87654321"
     assert_not @customer.valid?
   end
+
+  test "customerNumber should be unique" do
+    customer2 = @customer.dup
+    @customer.save
+    assert_not customer2.valid?
+  end
+
+  test "customerNumber should not be blank" do
+    @customer.customerNumber = " "
+    assert_not @customer.valid?
+  end
+
+  test "customerNumber length should not be less than 8" do
+    @customer.customerNumber = "12"
+    assert_not @customer.valid?
+  end
+
+  test "customerNumber lenght should not be more than 16" do
+    @customer.customerNumber = "123456789123456789"
+    assert_not @customer.valid?
+  end
+
+  test "password should not be blank" do
+    @customer.password = @customer.password_confirmation = " "
+    assert_not @customer.valid?
+  end
+
+  test "password length should not be less than 8" do
+    @customer.password = @customer.password_confirmation = "1234567"
+    assert_not @customer.valid?
+  end
+
+  test "email should not be blank" do
+    @customer.email = " "
+    assert_not @customer.valid?
+  end
+
+  test "email should have a valid format" do
+    @customer.email = "johnsmith"
+    assert_not @customer.valid?
+  end
+
 end
