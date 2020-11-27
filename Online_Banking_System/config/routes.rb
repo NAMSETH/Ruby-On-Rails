@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   delete '/customer/logout', to: 'customer_session#destroy'
 
 
-  root 'customers#index'
+  root 'customer_session#new'
   # get 'customers/index'
   # get 'customers/show'
   # get 'customers/new'
