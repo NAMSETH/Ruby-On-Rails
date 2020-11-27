@@ -6,7 +6,7 @@ class CustomerSessionController < ApplicationController
     customer = Customer.find_by(email: params[:session][:email].downcase)
     if customer && customer.authenticate(params[:session][:password])
       log_in(customer)
-      redirect_to(customer_index_path)
+      redirect_to(customers_path)
     else
       render 'new'
     end
