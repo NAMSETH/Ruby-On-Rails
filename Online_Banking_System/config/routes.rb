@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  root 'application#application'
   get '/customer/login', to: 'customer_session#new'
   post '/customer/login', to: 'customer_session#create'
   delete '/customer/logout', to: 'customer_session#destroy'
