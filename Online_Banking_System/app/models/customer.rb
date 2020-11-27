@@ -5,6 +5,6 @@ class Customer < ApplicationRecord
   validates :forename, presence: true
   validates :surname, presence: true
   validates :email, presence: true, format: {with: URI::MailTo::EMAIL_REGEXP}
-  validates :phone, presence: true
+  validates :phone, presence: true, format: { with: /\d{5} \d{6}/}
   validates :dob, presence: true
 end
