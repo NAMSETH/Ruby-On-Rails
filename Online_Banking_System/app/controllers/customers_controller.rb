@@ -1,4 +1,5 @@
 class CustomersController < ApplicationController
+  include CustomersHelper
   def index
   end
 
@@ -6,7 +7,7 @@ class CustomersController < ApplicationController
   end
 
   def new
-    @customer = Customer.new
+    @customer = Customer.new({:customerNumber => generateCustomerNumber})
   end
 
   def create
@@ -31,7 +32,7 @@ class CustomersController < ApplicationController
   end
 
   def customer_params
-    params.require(:customer).permit(:forename, :surname,
-       :email, :phone, :email, :dob, :password)
+    params.require(:customer).permit(:customerNumber,:forename, :surname,
+       :email, :phone, :email, :dob, :password, :password_confirmation)
   end
 end
