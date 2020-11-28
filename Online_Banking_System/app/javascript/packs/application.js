@@ -16,5 +16,7 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-import 'bootstrap';
-import './stylesheets/application.scss';
+//= require jquery
+//= require jquery_ujs
+//= require turbolinks
+//= require_tree .
