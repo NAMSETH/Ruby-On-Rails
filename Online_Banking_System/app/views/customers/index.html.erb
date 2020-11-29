@@ -1,1 +1,15 @@
-<%= link_to('New Customer', new_customer_path) %>
+<%= link_to('New Customer', new_customer_path) %>#
+
+
+  </table class="table">
+    <tr><th>Accounts</th></tr>
+    <% @accounts.each do |account| %>
+    <tr>
+      <td><%= account.accountNumber %></td>
+      <br>
+      <td><%= account.accountName %></td>
+      <br><br>
+      <td><%= get_Balance_string %></td>
+      <tr>
+        <% end %>
+  </table>
