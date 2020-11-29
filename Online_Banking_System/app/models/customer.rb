@@ -10,4 +10,10 @@ class Customer < ApplicationRecord
   validates :dob, presence: true
   validates :password, presence: true, length: {minimum: 8, maximum: 12}
 
+  def Customer.digest(passphrase)
+  #From https://github.com/rails/rails/blob/master/activemodel/lib/active_model/secure_password.rb
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
+    BCrypt::Password.create(passphrase, cost: cost)
+  end
+
 end
