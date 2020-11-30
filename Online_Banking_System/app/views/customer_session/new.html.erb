@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+</head>
+<body>
+<div class="container px-lg-20 border bg-light">
+  <div class="row align-items-center">
+    <div class="col align-items-center">
+  <%= bootstrap_form_with(url: customer_login_path, scope: :session, local: true) do |f| %>
+    <%= f.text_field :email %>
+    <%= f.password_field :password %>
+    <%= f.submit "Log in", class: 'btn btn=border border-dark' %>
+  <% end %>
+    </div>
+  </div>
+</div>
+<div class="text-center p-t-115">
+<span class="txt1">
+Don’t have an account?
+</span>
+<a class="txt2" href="#">
+Sign Up
+</a>
+</div>
+</html>
