@@ -1,19 +1,10 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  customerNumber: MyString
-  forename: MyString
-  surname:
-  email: MyString
-  phone: MyString
-  password_digest: MyString
-  dob: 2020-11-17
-
-two:
-  customerNumber: MyString
-  forename: MyString
-  surname:
-  email: MyString
-  phone: MyString
-  password_digest: MyString
-  dob: 2020-11-17
+mary:
+  customerNumber: 412286372634342
+  forename: mary
+  surname: smith
+  email: mary@gmail.com
+  phone: "44123451234"
+  password_digest: <%= Customer.digest("12345678") %>
+  dob: "10/11/1996"

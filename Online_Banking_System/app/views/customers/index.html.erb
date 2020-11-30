@@ -1,1 +1,7 @@
-<%= link_to('New Customer', new_customer_path) %>
+<% if logged_in? %>
+<%= "logged in" %>
+</br>
+<%= link_to "Log out", customer_logout_path, method: "delete" %>
+<% else %>
+<%= link_to("Login", customer_login_path) %>
+<% end %>

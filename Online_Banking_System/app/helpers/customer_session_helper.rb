@@ -4,7 +4,7 @@ module CustomerSessionHelper
   end
 
   def current_user
-    if session[:user_id]
+    if session[:customer_id]
       Customer.find_by(id: session[:customer_id])
     end
   end
@@ -14,6 +14,7 @@ module CustomerSessionHelper
   end
 
   def log_out
-    session.delete(:user_id)
+    session.delete(:customer_id)
+    @current_customer = nil
   end
 end
