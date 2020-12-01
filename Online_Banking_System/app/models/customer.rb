@@ -1,5 +1,5 @@
 class Customer < ApplicationRecord
-  has_many :Account
+  has_many :accounts
   has_secure_password
 
   validates :customerNumber, presence: true,  uniqueness: true
