@@ -1,0 +1,18 @@
+  <br>
+  <h1>Hello, <%= "#{current_user.forename} #{current_user.surname}" %></h1>
+  <br>
+  <h2><B>Accounts</B></h2>
+  </table class="table">
+  <hr>
+    <% @accounts.each do |account| %>
+    <tr>
+      <td><B><%= account.accountName %></B></td>
+      <br>
+      <td><%= "Account Number: #{account.accountNumber}" %></td>
+      <br>
+      <td><%= formatBalance(account) %></td>
+      <br><br>
+      <hr>
+    <tr>
+        <% end %>
+  </table>
