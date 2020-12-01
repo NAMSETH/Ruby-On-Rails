@@ -12,12 +12,7 @@ module AccountsHelper
       formatString = "$"
     end
     formattedBalance = "#{(account.balance / 100.00).round(2)}"
-
     formatString = formatString + formattedBalance
-
-
-
-
   end
 
 
