@@ -1,0 +1,24 @@
+
+<% if logged_in? %>
+<%= "logged in" %>
+</br>
+<%= link_to "Log out", customer_logout_path, method: "delete" %>
+<% else %>
+<%= link_to("Login", customer_login_path) %>
+<% end %>
+
+  <h2><B>Accounts</B></h2>
+  </table class="table">
+  <hr>
+    <% @accounts.each do |account| %>
+    <tr>
+      <td><B><%= account.accountName %></B></td>
+      <br>
+      <td><%= "Account Number: #{account.accountNumber}" %></td>
+      <br>
+      <td><%= formatBalance(account) %></td>
+      <br><br>
+      <hr>
+    <tr>
+        <% end %>
+  </table>

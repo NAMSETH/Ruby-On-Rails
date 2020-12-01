@@ -1,9 +1,6 @@
 class CustomersController < ApplicationController
   include CustomersHelper
   def index
-    @customer = Customer.find(1)
-    @accounts = @customer.accounts
-    puts @accounts.empty?
   end
 
   def show
