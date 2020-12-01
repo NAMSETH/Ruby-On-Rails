@@ -12,13 +12,13 @@ class AccountsHelper < ActionView::TestCase
     assert_equal(formattedString, "£1234.56")
   end
 
-  test "valid formatted balacne for EUR" do
+  test "valid formatted balance for EUR" do
     @account.currency = "EUR"
     formattedString = formatBalance(@account)
     assert_equal(formattedString, "€1234.56")
   end
 
-  test "valid formatted balacne for USD" do
+  test "valid formatted balance for USD" do
     @account.currency = "USD"
     formattedString = formatBalance(@account)
     assert_equal(formattedString, "$1234.56")
