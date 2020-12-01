@@ -7,9 +7,9 @@ class CustomerLoginTest < ActionDispatch::IntegrationTest
     assert_not is_logged_in?
     assert_template 'customer_session/new'
     post customer_login_url, params: { session: {email: "mary@gmail.com", password: '12345678'}}
-    assert_redirected_to customers_path
+    assert_redirected_to accounts_path
     follow_redirect!
-    assert_template 'customers/index'
+    assert_template 'accounts/index'
     assert is_logged_in?
   end
 
