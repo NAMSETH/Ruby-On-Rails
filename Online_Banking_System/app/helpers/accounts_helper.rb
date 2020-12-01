@@ -1,14 +1,29 @@
 module AccountsHelper
+
+
+
   def formatBalance(account)
-    formattedString = ""
+    formatString = ""
     if (account.currency == "GBP")
-      formattedString = "£"
-    else if (account.currency == "EUR")
-      formattedString = "€"
+      formatString = "£"
+    elsif (account.currency == "EUR")
+      formatString = "€"
     else
-      formattedString = "$"
-   end
-   formattedString = formattedString + "#{account.balance}"
- end
-end
+      formatString = "$"
+    end
+    formattedBalance = "#{(account.balance / 100.00).round(2)}"
+
+    formatString = formatString + formattedBalance
+
+
+
+
+  end
+
+
+
+
+
+
+
 end
