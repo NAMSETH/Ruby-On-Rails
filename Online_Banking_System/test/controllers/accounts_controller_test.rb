@@ -2,13 +2,10 @@ require 'test_helper'
 
 class AccountsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get accounts_index_url
+    get '/accounts/index'
     assert_response :success
   end
 
-  test "should get show" do
-    get accounts_show_url
-    assert_response :success
-  end
+
 
 end

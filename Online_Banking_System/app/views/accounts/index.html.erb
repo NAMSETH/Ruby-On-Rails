@@ -1,12 +1,6 @@
-
-<% if logged_in? %>
-<%= "logged in" %>
-</br>
-<%= link_to "Log out", customer_logout_path, method: "delete" %>
-<% else %>
-<%= link_to("Login", customer_login_path) %>
-<% end %>
-
+  <br>
+  <h1>Hello, <%= "#{current_user.forename} #{current_user.surname}" %></h1>
+  <br>
   <h2><B>Accounts</B></h2>
   </table class="table">
   <hr>
