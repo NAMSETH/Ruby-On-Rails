@@ -1,2 +1,25 @@
-<h1>Customers#edit</h1>
-<p>Find me in app/views/customers/edit.html.erb</p>
+<%=  link_to('Home', accounts_path)%>
+
+<h1>Edit Details</h1>
+<%=  bootstrap_form_for @customer, local:true do |f| %>
+<%= error_messages(f.object) %>
+  <p>
+    <%= f.text_field:customerNumber, :readonly => true, label: "Customer Number" %>
+  </p>
+  <p>
+    <%= f.text_field(:forename) %>
+  </p>
+  <p>
+    <%= f.text_field(:surname) %>
+  </p>
+  <p>
+    <%= f.text_field(:email) %>
+  </p>
+  <p>
+    <%= f.date_select :dob, start_year: 1900, end_year: Time.now.year,
+     label: "Date of Birth" %>
+  </p>
+
+<%= f.submit("Update") %>
+
+<% end %>

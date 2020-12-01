@@ -1,5 +1,6 @@
 class CustomersController < ApplicationController
   include CustomersHelper
+  before_action :redirect_if_not_logged_in, only: [:edit, :update]
   def index
   end
 
@@ -20,9 +21,17 @@ class CustomersController < ApplicationController
   end
 
   def update
+    @customer = Customer.find(params[:id])
+    puts @customer
+    if @customer.update_attributes(customer_edit_params)
+      redirect_to accounts_path
+    else
+      render 'edit'
+    end
   end
 
   def edit
+    @customer = Customer.find(params[:id])
   end
 
   def delete
@@ -35,4 +44,10 @@ class CustomersController < ApplicationController
     params.require(:customer).permit(:customerNumber,:forename, :surname,
        :email, :phone, :email, :dob, :password, :password_confirmation)
   end
+
+  def customer_edit_params
+    params.require(:customer).permit(:customerNumber,:forename, :surname,
+       :email, :phone, :email, :dob)
+  end
+
 end
