@@ -1,7 +1,5 @@
 module AccountsHelper
 
-
-
   def formatBalance(account)
     formatString = ""
     if (account.currency == "GBP")
@@ -14,11 +12,5 @@ module AccountsHelper
     formattedBalance = "#{account.balance}"
     formatString = formatString + formattedBalance
   end
-
-
-
-
-
-
 
 end
