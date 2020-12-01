@@ -9,8 +9,8 @@ class AccountTest < ActiveSupport::TestCase
     @account = Account.new({accountName: "Basic Account",
       accountNumber: "12345678", balance: 1234.56, currency: "GBP"})
       @customer.accounts << @account
-
   end
+
   test "account with valid details" do
     assert @account.valid?
   end
