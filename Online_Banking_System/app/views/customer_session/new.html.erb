@@ -1,25 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Login</title>
-</head>
-<body>
-<div class="container px-lg-20 border bg-light">
-  <div class="row align-items-center">
-    <div class="col align-items-center">
-  <%= bootstrap_form_with(url: customer_login_path, scope: :session, local: true) do |f| %>
-    <%= error_messages(f.object) %>
-    <%= f.text_field :email %>
-    <%= f.password_field :password %>
-    <%= f.submit "Log in", class: 'btn btn=border border-dark' %>
-  <% end %>
-    </div>
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Login </title>
+    <meta charset="utf-8">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  </head>
+  <body>
+  <div class="text-center mb-4">
+    <h1 class="h3 mb-3 font-weight-normal"></h1>
   </div>
-</div>
+  <%= bootstrap_form_with(class: 'form-signin', url: customer_login_path, scope: :session, local: true) do |f| %>
+    <%= f.text_field :email, class:"form-control" %>
+    <%= f.password_field :password, class:"form-control" %>
+    <%= f.submit "Sign in", class: 'btn btn-lg btn-primary btn-block' %>
+  <% end %>
 <div class="text-center p-t-115">
 <span class="txt1">
 Don’t have an account?
 </span>
 <%= link_to('Sign Up', new_customer_path) %>
-</div>
+</body>
 </html>

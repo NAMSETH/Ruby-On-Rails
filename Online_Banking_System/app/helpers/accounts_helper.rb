@@ -1,6 +1,11 @@
 module AccountsHelper
+  def generateAccountNumber
+    accountNumber = rand(1000000000000000..9999999999999999)
+  end
 
-
+  def generateBalance
+    balanc = rand(100..100000)
+  end
 
   def formatBalance(account)
     formatString = ""
@@ -14,11 +19,5 @@ module AccountsHelper
     formattedBalance = "#{account.balance}"
     formatString = formatString + formattedBalance
   end
-
-
-
-
-
-
 
 end

@@ -28,11 +28,12 @@
     <nav class="navbar navbar-expand-sm bg-dark">
       <div class="container navbar-collapse collapse">
         <ul class="navbar-nav ml-auto">
+          <li class="nav-item right-align">
+              <%= link_to "Home", root_path, method: "get", class: "nav-link" %>
+          </li>
           <li class="nav-item">
             <% if logged_in? %>
               <%= link_to "Log out", customer_logout_path, method: "delete", class: "nav-link" %>
-            <% else %>
-              <%= link_to "Log in", customer_login_path, class: "nav-link" %>
             <% end %>
           </li>
         </ul>
