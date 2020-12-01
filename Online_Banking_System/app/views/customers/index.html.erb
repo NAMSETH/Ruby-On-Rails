@@ -7,17 +7,18 @@
 <%= link_to("Login", customer_login_path) %>
 <% end %>
 
-  <br><br>
+  <h2><B>Accounts</B></h2>
   </table class="table">
-    <tr><th>Accounts</th></tr>
+  <hr>
     <% @accounts.each do |account| %>
     <tr>
       <td><B><%= account.accountName %></B></td>
       <br>
-      <td><%= account.accountNumber %></td>
+      <td><%= "Account Number: #{account.accountNumber}" %></td>
+      <br>
       <td><%= formatBalance(account) %></td>
       <br><br>
-      <tr>
-      <tr>
+      <hr>
+    <tr>
         <% end %>
   </table>
