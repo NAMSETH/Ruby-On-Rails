@@ -1,2 +1,9 @@
-<h1>Customers#edit</h1>
-<p>Find me in app/views/customers/edit.html.erb</p>
+<%=  link_to('Home', accounts_path)%>
+
+<%=  form_for(@customer) do |f| %>
+
+    <%= render(:partial => 'form', :locals => {:f => f}) %>
+
+<%= f.submit("Save Changes") %>
+
+<% end %>
