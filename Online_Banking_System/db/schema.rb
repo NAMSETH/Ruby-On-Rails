@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_01_093153) do
+ActiveRecord::Schema.define(version: 2020_12_01_122212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2020_12_01_093153) do
     t.bigint "customer_id"
     t.string "accountNumber"
     t.string "accountName"
-    t.integer "balance"
+    t.decimal "balance", precision: 10, scale: 2
     t.string "currency"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

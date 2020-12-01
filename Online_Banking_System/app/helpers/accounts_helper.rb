@@ -11,7 +11,7 @@ module AccountsHelper
     else
       formatString = "$"
     end
-    formattedBalance = "#{(account.balance / 100.00).round(2)}"
+    formattedBalance = "#{account.balance}"
     formatString = formatString + formattedBalance
   end
 
