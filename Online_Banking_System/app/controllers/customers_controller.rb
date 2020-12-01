@@ -1,10 +1,9 @@
 class CustomersController < ApplicationController
   include CustomersHelper
   def index
-    @account = Account.new({accountNumber: 12345678, accountName: "Reward Current Account", balance: 10000, currency: "GBP"})
-    @account.save
     @customer = Customer.find(1)
-    @customer.accounts << @account
+    @accounts = @customer.accounts
+    puts @accounts.empty?
   end
 
   def show

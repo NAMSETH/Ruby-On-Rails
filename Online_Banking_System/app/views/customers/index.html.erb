@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <% if logged_in? %>
 <%= "logged in" %>
 </br>
@@ -6,20 +6,18 @@
 <% else %>
 <%= link_to("Login", customer_login_path) %>
 <% end %>
-=======
-<%= link_to('New Customer', new_customer_path) %>#
 
-
+  <br><br>
   </table class="table">
     <tr><th>Accounts</th></tr>
     <% @accounts.each do |account| %>
     <tr>
-      <td><%= account.accountNumber %></td>
+      <td><B><%= account.accountName %></B></td>
       <br>
-      <td><%= account.accountName %></td>
+      <td><%= account.accountNumber %></td>
+      <td><%= formatBalance(account) %></td>
       <br><br>
-      <td><%= get_Balance_string %></td>
+      <tr>
       <tr>
         <% end %>
   </table>
->>>>>>> 1eb03156f096e3344c45d70022b27706041c62d8
