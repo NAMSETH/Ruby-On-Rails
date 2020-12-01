@@ -1,4 +1,5 @@
 class CustomerSessionController < ApplicationController
+
   def new
   end
 

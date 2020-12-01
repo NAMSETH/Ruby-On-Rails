@@ -12,7 +12,9 @@ class CustomersController < ApplicationController
 
   def create
     @customer = Customer.new(customer_params)
-    if @customer.save
+
+    if @customer.valid?
+      @customer.save
       redirect_to(customers_path)
     else
       render('new')
