@@ -2,8 +2,8 @@ require 'test_helper'
 
 class CustomerTest < ActiveSupport::TestCase
   def setup
-    @customer = Customer.new({customerNumber: 1234567898,
-       email: "john@gmail.com", forename: "john", surname: "smith",
+    @customer = Customer.new({customerNumber: 1234567867,
+       email: "peter@gmail.com", forename: "peter", surname: "smith",
        phone: "44123451234", dob: "10/11/1996", password: "12345678",
         password_confirmation: "12345678"})
     @empty_customer = Customer.new
