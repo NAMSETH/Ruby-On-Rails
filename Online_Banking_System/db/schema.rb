@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_01_130021) do
+ActiveRecord::Schema.define(version: 2020_12_02_152529) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,12 +46,15 @@ ActiveRecord::Schema.define(version: 2020_12_01_130021) do
   end
 
   create_table "transactions", force: :cascade do |t|
+    t.bigint "sendingAccount_id"
+    t.bigint "recievingAccount_id"
     t.string "transactionNumber"
     t.date "transactionDate"
     t.string "currency"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.decimal "amount"
+    t.string "description"
+    t.index ["recievingAccount_id"], name: "index_transactions_on_recievingAccount_id"
+    t.index ["sendingAccount_id"], name: "index_transactions_on_sendingAccount_id"
   end
 
 end
