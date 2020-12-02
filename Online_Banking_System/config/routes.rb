@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   delete '/customer/logout', to: 'customer_session#destroy'
 
 
+
   root 'customer_session#new'
   resources :customers
   resources :accounts
-
+  resources :transactions
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
