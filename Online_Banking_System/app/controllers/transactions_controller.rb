@@ -1,4 +1,5 @@
 class TransactionsController < ApplicationController
+  include TransactionsHelper
   def index
     @account = Account.find(params[:account_id])
     id  = @account.id

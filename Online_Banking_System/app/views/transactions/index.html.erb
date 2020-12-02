@@ -2,7 +2,8 @@
   <br>
   <h2>Transactions for <%= @account.accountName %> </h2>
   <br>
-  <h4> <%= "Account Number: #{ @account.accountNumber }"%> </h4>
+  <h5> <%= "Account Number: #{ @account.accountNumber }"%> </h5>
+  <h5> <%= "Current Balance: #{ formatBalance(@account) }"%> </h5>
   <br><br>
 </div>
 
@@ -12,7 +13,7 @@
   <tr>
     <td> <%= transaction.transactionDate %> </td>
     <td> <%= transaction.description %> </td>
-    <td> <%= transaction.amount %> </td>
+    <td> <%= formatAmount(transaction) %> </td>
   </tr>
   <% end %>
 </table>
