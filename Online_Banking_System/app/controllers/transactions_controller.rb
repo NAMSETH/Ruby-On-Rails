@@ -1,5 +1,6 @@
 class TransactionsController < ApplicationController
   include TransactionsHelper
+  before_action :redirect_if_not_logged_in, only: [:index]
   def index
     @account = Account.find(params[:account_id])
     id  = @account.id
