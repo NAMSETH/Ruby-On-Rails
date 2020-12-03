@@ -1,23 +1,42 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Login </title>
     <meta charset="utf-8">
+    <title>Login</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/floating-labels/">
+
+    <!-- Bootstrap core CSS -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <%stylesheet_link_tag "customer_session"%>
   </head>
-  <body>
-  <div class="text-center mb-4">
-    <h1 class="h3 mb-3 font-weight-normal"></h1>
-  </div>
+  <body class = "login-body">
   <%= bootstrap_form_with(class: 'form-signin', url: customer_login_path, scope: :session, local: true) do |f| %>
+  <div class="text-center mb-4">
+    <img class="mb-4" src="/docs/4.5/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Log in</h1>
+  </div>
     <%= f.text_field :email, class:"form-control" %>
     <%= f.password_field :password, class:"form-control" %>
     <%= f.submit "Sign in", class: 'btn btn-lg btn-primary btn-block' %>
   <% end %>
-<div class="text-center p-t-115">
-<span class="txt1">
-Don’t have an account?
-</span>
-<%= link_to('Sign Up', new_customer_path) %>
 </body>
 </html>

@@ -25,20 +25,34 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-sm bg-dark">
-      <div class="container navbar-collapse collapse">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item right-align">
-              <%= link_to "Home", root_path, method: "get", class: "nav-link" %>
+<% if logged_in? %>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">
+        <img src="/docs/4.5/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+        Bank
+      </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <%= link_to "Home", root_path, method: "get", class: "nav-link" %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "Accounts", accounts_path, method: "get", class: "nav-link" %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "Transactions", root_path, method: "get", class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <% if logged_in? %>
-              <%= link_to "Log out", customer_logout_path, method: "delete", class: "nav-link" %>
-            <% end %>
+            <%= link_to "Logout", customer_logout_path, method: "delete", class: "nav-link  my-2 my-lg-0" %>
           </li>
         </ul>
+
       </div>
     </nav>
+<% end %>
     <div class="container">
       <div class="row">
         <div class="col-sm-12">

@@ -16,3 +16,5 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+$('a[data-popup]').on('click', function(e) { window.open($(this).attr('href')); e.preventDefault(); });
