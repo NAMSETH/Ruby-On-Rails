@@ -6,4 +6,5 @@ class CustomersControllerTest < ActionDispatch::IntegrationTest
     get new_customer_path
     assert_response :success
   end
+
 end

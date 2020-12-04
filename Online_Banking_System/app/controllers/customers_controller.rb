@@ -9,9 +9,8 @@ class CustomersController < ApplicationController
   def create
     @customer = Customer.new(customer_params)
 
-    if @customer.valid?
-      @customer.save
-      redirect_to(customers_path)
+    if @customer.save
+      redirect_to(customer_login_url)
     else
       render('new')
     end
@@ -29,6 +28,9 @@ class CustomersController < ApplicationController
 
   def edit
     @customer = Customer.find(params[:id])
+  end
+
+  def show
   end
 
   def customer_params

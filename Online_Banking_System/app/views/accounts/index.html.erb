@@ -1,9 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Accounts</title>
+  </head>
 <%=  link_to('Edit Personal Details', edit_customer_path(current_user)) %>
   <br>
   <h1>Hello, <%= "#{current_user.forename} #{current_user.surname}" %></h1>
   <br>
   <h2><B>Accounts</B></h2>
-  </table class="table">
   <hr>
     <% @accounts.each do |account| %>
       <tr>
@@ -19,3 +23,4 @@
     <% end %>
 
 <%=  link_to('Create a new account', new_account_path) %>
+</html>

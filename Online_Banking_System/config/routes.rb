@@ -1,11 +1,22 @@
 Rails.application.routes.draw do
 
+  get 'admin_users/new'
+  get 'admin_user/new'
+  root 'customer_session#new'
+
   get '/customer/login', to: 'customer_session#new'
   post '/customer/login', to: 'customer_session#create'
   delete '/customer/logout', to: 'customer_session#destroy'
 
+  get '/admin/login', to: 'admin_sessions#new'
+  post '/admin/login', to: 'admin_sessions#create'
+  delete '/admin/logout', to: 'admin_sessions#destroy'
 
-  root 'customer_session#new'
+  resources :admin_users do
+    member do
+      get :delete
+    end
+  end
   resources :customers do
     member do
       get :delete

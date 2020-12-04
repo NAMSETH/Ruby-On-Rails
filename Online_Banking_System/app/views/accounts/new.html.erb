@@ -1,18 +1,25 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <% stylesheet_link_tag "accounts.css" %>
+    <title>Create new account</title>
   </head>
   <body>
-        <% stylesheet_link_tag "accounts.css" %>
-  <%=  form_for(@account, :method => 'post', class: 'form-signin') do |f| %>
-    <%= fields_for(@customer_account, class: 'form-signin') do |g| %>
-    <tr>
-        <th>Customer Number</th>
-        <%=  g.text_field :customerNumber, class: "form-label-group" %>
-    </tr>
-    <%end%>
-      <%= render(:partial => 'form', :locals => {:f => f}) %>
-  <%= f.submit "Create new account", class: "btn btn-lg btn-primary " %>
-  <% end %>
+    <div class="container">
+      <div class="form-account">
+        <%=  form_for(@account, :method => 'post', class: 'form-account') do |f| %>
+          <%= fields_for(@customer_account, class: 'form-account') do |g| %>
+          <table class ='form-signin'>
+          <tr>
+              <th>Customer Number</th>
+              <td><%=  g.text_field :customerNumber, class: "form-control" %></td>
+          </tr>
+          </table>
+          <%end%>
+          <%= render(:partial => 'form', :locals => {:f => f}) %>
+          <%= f.submit "Create new account", class: 'btn btn-lg btn-primary btn-block' %>
+        <% end %>
+      </div>
+    </div>
   </body>
 </html>

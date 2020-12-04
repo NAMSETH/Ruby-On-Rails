@@ -3,10 +3,17 @@ class ApplicationController < ActionController::Base
   include CustomerSessionHelper
   include AccountsHelper
   include CustomersHelper
+  include AdminSessionsHelper
 
   def redirect_if_not_logged_in
     unless logged_in?
       redirect_to customer_login_url
+    end
+  end
+
+  def redirect_if_not_admin
+    unless admin_logged_in?
+      redirect_to admin_login_path
     end
   end
 end
