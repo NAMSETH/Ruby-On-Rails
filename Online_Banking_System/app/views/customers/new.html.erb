@@ -1,9 +1,14 @@
-<%=  link_to('Home', customer_login_url)%>
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>New customer information</title>
+  </head>
+  <body>
+    <div class=container>
+        <%=  form_for(@customer, :method => 'post') do |f| %>
 
-<%=  form_for(@customer, :method => 'post') do |f| %>
+            <%= render(:partial => 'form', :locals => {:f => f}) %>
 
-    <%= render(:partial => 'form', :locals => {:f => f}) %>
-
-<%= f.submit("Save Changes") %>
-
+        <%= f.submit("Save Changes") %>
+    </div>
 <% end %>

@@ -25,7 +25,16 @@ class AccountsController < ApplicationController
   def show
   end
 
+  def delete
+  end
+
+  def destroy
+    @account = Account.find_by(params[:id])
+    @account.destroy
+
+  end
   def showTransactions
+
   end
 
   def account_params

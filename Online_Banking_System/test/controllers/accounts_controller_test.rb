@@ -6,6 +6,11 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should get new" do
+    get '/accounts/new'
+    assert_response :success
+  end
+
 
 
 end
