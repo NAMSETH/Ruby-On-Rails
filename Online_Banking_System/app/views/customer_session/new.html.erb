@@ -37,6 +37,7 @@
     <%= f.text_field :email, class:"form-control" %>
     <%= f.password_field :password, class:"form-control" %>
     <%= f.submit "Sign in", class: 'btn btn-lg btn-primary btn-block' %>
+    <%=  link_to('Sign up', new_customer_path) %>
   <% end %>
 </body>
 </html>
