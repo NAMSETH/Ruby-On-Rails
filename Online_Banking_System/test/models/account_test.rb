@@ -2,13 +2,10 @@ require 'test_helper'
 
 class AccountTest < ActiveSupport::TestCase
   def setup
-    @customer = Customer.new({customerNumber: 1234567898,
-       email: "john@gmail.com", forename: "john", surname: "smith",
-       phone: "44123451234", dob: "10/11/1996", password: "12345678",
-        password_confirmation: "12345678"})
+    @customer = Customer.find_by(customerNumber: "1234567898")
     @account = Account.new({accountName: "Basic Account",
       accountNumber: "12345678", balance: 1234.56, currency: "GBP"})
-      @customer.accounts << @account
+    @customer.accounts << @account
   end
 
   test "account with valid details" do
@@ -66,4 +63,9 @@ class AccountTest < ActiveSupport::TestCase
       assert_not @accountDuplicate.valid?
   end
 
+  test "account not associated with a customer" do
+    @noCustomerAccount = Account.new({accountName: "Basic Account",
+      accountNumber: "1233731111678", balance: 1234.56, currency: "GBP"})
+    assert_not @noCustomerAccount.valid?
+  end
 end
