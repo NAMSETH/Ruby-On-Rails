@@ -25,6 +25,8 @@ class AccountsController < ApplicationController
   def show
   end
 
+  def showTransactions
+  end
 
   def account_params
     params.require(:account).permit(:accountNumber,:accountName, :balance,
