@@ -10,16 +10,18 @@
   <h2><B>Accounts</B></h2>
   <hr>
     <% @accounts.each do |account| %>
-      <tr>
-        <td><B><%= account.accountName %></B></td>
-        <br>
-        <td><%= "Account Number: #{account.accountNumber}" %></td>
-        <br>
-        <td><%= formatBalance(account) %></td>
-        <br><br>
-         <%= link_to('Delete', delete_account_path(account)) %>
-        <hr>
-      <tr>
+    <tr>
+      <td><B><%= account.accountName %></B></td>
+      <br>
+      <td><%= "Account Number: #{account.accountNumber}" %></td>
+      <br>
+      <td><%= formatBalance(account) %></td>
+      <br><br>
+      <td>
+        <%= link_to('View Transactions', transactions_path(account_id: account.id)) %>
+      </td>
+      <hr>
+    <tr>
     <% end %>
 
 <%=  link_to('Create a new account', new_account_path) %>
