@@ -1,0 +1,19 @@
+<div>
+  <br>
+  <h2>Transactions for <%= @account.accountName %> </h2>
+  <br>
+  <h5> <%= "Account Number: #{ @account.accountNumber }"%> </h5>
+  <h5> <%= "Current Balance: #{ formatBalance(@account) }"%> </h5>
+  <br><br>
+</div>
+
+<table class="table">
+  <tr> <th>Date</th> <th>Description</th> <th>Amount</th> </tr>
+  <% @transactions.each do |transaction| %>
+  <tr>
+    <td> <%= transaction.transactionDate %> </td>
+    <td> <%= transaction.description %> </td>
+    <td> <%= formatAmount(transaction) %> </td>
+  </tr>
+  <% end %>
+</table>

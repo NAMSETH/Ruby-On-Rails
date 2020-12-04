@@ -11,7 +11,6 @@ class CustomersController < ApplicationController
 
     if @customer.valid?
       @customer.save
-      redirect_to(customers_path)
     else
       render('new')
     end

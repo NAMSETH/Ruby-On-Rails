@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   delete '/customer/logout', to: 'customer_session#destroy'
 
 
+
   root 'customer_session#new'
   get 'payments/new'
   post 'payments/create'
