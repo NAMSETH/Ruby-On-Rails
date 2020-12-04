@@ -1,7 +1,8 @@
-// Place all the styles related to the customer_session controller here.
+// Place all the styles related to the Accounts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 @import "bootstrap/scss/bootstrap";
+
 
 html,
 body {
@@ -18,12 +19,13 @@ body {
   -ms-flex-align: center;
   align-items: center;
   width: 100%;
-  max-width: 420px;
+  max-width: 100px;
   padding: 15px;
   margin: auto;
 }
 
 .form-label-group {
+
 }
 
 .form-label-group input,

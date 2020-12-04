@@ -1,0 +1,19 @@
+<%= error_messages(f.object) %>
+<table>
+  <tr>
+      <th>Account Number</th>
+      <td> <%= f.text_field:accountNumber, :readonly => true, class: "form-control" %> </td>
+  </tr>
+    <tr>
+        <th>Account Name</th>
+        <td> <%= f.text_field:accountName, class: "form-control" %> </td>
+    </tr>
+    <tr>
+        <th>Balance</th>
+        <td> <%= f.text_field:balance, :readonly => true, class: "form-control" %> </td>
+    </tr>
+    <tr>
+        <th>Curreny</th>
+        <td> <%= f.select :currency, [['EUR', 'EUR'],['GBP', 'GBP'],['USD', 'USD']], class:"form-control"%> </td>
+    </tr>
+</table>

@@ -9,7 +9,7 @@ class PaymentsController < ApplicationController
   end
 
   def create
-      @payment = Payment.new(payment_params)
+      @payment = Transaction.new(payment_params)
   end
 
   def update
