@@ -31,11 +31,12 @@ class AccountsController < ApplicationController
   def destroy
     @account = Account.find_by(params[:id])
     @account.destroy
-
   end
+
   def showTransactions
 
   end
+
 
   def account_params
     params.require(:account).permit(:accountNumber,:accountName, :balance,
