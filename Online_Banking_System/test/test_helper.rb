@@ -13,4 +13,8 @@ class ActiveSupport::TestCase
   def is_logged_in?
     !session[:customer_id].nil?
   end
+
+  def is_admin_logged_in?
+    !session[:admin_user_id].nil?
+  end
 end
