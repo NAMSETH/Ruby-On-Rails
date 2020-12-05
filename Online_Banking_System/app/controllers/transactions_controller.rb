@@ -6,4 +6,32 @@ class TransactionsController < ApplicationController
     id  = @account.id
     @transactions = Transaction.where(sendingAccount_id: id).or(Transaction.where(recievingAccount_id: id))
   end
+
+  def show
+  end
+
+  def new
+      @transaction = Transaction.sendMoney(payment_params)
+  end
+
+  def sendMoney
+  end
+
+  def update
+  end
+
+  def edit
+  end
+
+  def delete
+  end
+
+  def destroy
+  end
+
+  private
+  def payment_params
+    params.require( :transaction).permit(:sendingAccount,:recievingAccount,:amount,
+:currency, :transactionNumber, :paymentDate)
+     end
 end
