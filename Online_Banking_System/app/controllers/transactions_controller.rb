@@ -1,13 +1,10 @@
 class TransactionsController < ApplicationController
   include TransactionsHelper
-  before_action :redirect_if_not_logged_in, only: [:index]
+  before_action :redirect_if_not_logged_in, only: [:index, :new, :create, ]
   def index
     @account = Account.find(params[:account_id])
     id  = @account.id
     @transactions = Transaction.where(sendingAccount_id: id).or(Transaction.where(recievingAccount_id: id))
-  end
-
-  def show
   end
 
   def new
@@ -27,18 +24,20 @@ class TransactionsController < ApplicationController
       @id = @recievingAccount.id
       amount = payment_params[:amount]
         @transaction = Transaction.new({
-          amount: payment_params[:amount], transactionNumber: payment_params[:transactionNumber],
+          amount: payment_params[:amount].to_d, transactionNumber: payment_params[:transactionNumber],
           currency: payment_params[:currency], sendingAccount_id: payment_params[:sendingAccount_id],
           recievingAccount_id: @id, transactionNumber: payment_params[:transactionNumber],
           description: payment_params[:description], transactionDate: DateTime.now
           })
           if @transaction.valid?
-            @transaction.save
-            # update balances
+            if processPayment(@transaction)
+              @transaction.save
+            else
+              redirect_to('transactions#payment_error')
+            end
           else
             redirect_to(new_transaction_path(account_id: payment_params[:sendingAccount_id]))
           end
-
     end
   end
 

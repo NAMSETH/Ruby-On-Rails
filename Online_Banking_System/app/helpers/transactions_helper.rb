@@ -33,7 +33,23 @@ module TransactionsHelper
       generateTransactionNumber
     else
       generatedValue
+    end
+  end
 
+  def processPayment(transaction)
+    sendingAccount = Account.find(transaction.sendingAccount_id)
+    recievingAccount = Account.find(transaction.recievingAccount_id)
+    sendingAccount.balance = sendingAccount.balance - transaction.amount
+    recievingAccount.balance = recievingAccount.balance + transaction.amount
+    if sendingAccount.balance < 0 || recievingAccount.balance < 0
+      false
+    end
+    if sendingAccount.valid? && recievingAccount.valid?
+        sendingAccount.save
+        recievingAccount.save
+      true
+    else
+      false
     end
   end
 
