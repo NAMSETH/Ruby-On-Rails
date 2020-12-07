@@ -1,5 +1,10 @@
 <h1>Create a payment here</h1>
-<%= form_with scope: :transaction , url: transactions_sendMoney_path, local: true do |f| %>
+<%= form_with scope: :transaction , url: transactions_create_path, local: true do |f| %>
+<p>
+        <%= f.label "The account number you want to send money from:" %>
+         <%= f.text_field(:sendingAccount) %>
+           <%  %>
+</p>
 <p>
         <%= f.label "The account number you want to send money to:" %>
          <%= f.text_field(:recievingAccount) %>
@@ -16,10 +21,6 @@
 <p>
         <%= f.label "Transaction number:" %>
          <%= f.text_field:transactionNumber %>
-</p>
-<p>
-        <%= f.label :paymentDate %>
-         <%= f.date_field(:paymentDate) %>
 </p>
 <p>
         <%= f.submit "Create payment "%>

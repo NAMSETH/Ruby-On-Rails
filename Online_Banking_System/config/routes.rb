@@ -7,7 +7,8 @@ Rails.application.routes.draw do
 
 
   root 'customer_session#new'
-  get 'transactions/sendMoney'
+  get 'transactions/new'
+  post 'transactions/create'
   # get 'customers/index'
   # get 'customers/show'
   # get 'customers/new'

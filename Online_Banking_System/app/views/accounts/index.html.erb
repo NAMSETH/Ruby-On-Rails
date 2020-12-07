@@ -16,6 +16,9 @@
       <td>
         <%= link_to('View Transactions', transactions_path(account_id: account.id)) %>
       </td>
+      <td>
+        <%= link_to('Make transaction', transactions_new_path(account_id: account.id)) %>
+      </td>
       <hr>
     <tr>
     <% end %>

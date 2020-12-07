@@ -11,10 +11,20 @@ class TransactionsController < ApplicationController
   end
 
   def new
-      @transaction = Transaction.sendMoney(payment_params)
   end
 
-  def sendMoney
+  def create
+    @account= Account.where(accountNumber: :sendingAccount)
+    params[:transaction][:sendingAccount]= @account
+    params[:transaction][:recievingAccount] =  Account.where(accountNumber: :recievingAccount)
+    @transaction = Transaction.new(payment_params)
+    if @transaction.valid?
+      @transaction.sendingAccount.balance= @transaction.sendingAccount.balance - @transaction.amount
+      @transaction.recievingAccount.balance= @transaction.recievingAccount.balance - @transaction.amount
+      @transaction.save
+    else
+      render('create')
+    end
   end
 
   def update
@@ -29,9 +39,8 @@ class TransactionsController < ApplicationController
   def destroy
   end
 
-  private
   def payment_params
     params.require( :transaction).permit(:sendingAccount,:recievingAccount,:amount,
-:currency, :transactionNumber, :paymentDate)
+:currency, :transactionNumber)
      end
 end

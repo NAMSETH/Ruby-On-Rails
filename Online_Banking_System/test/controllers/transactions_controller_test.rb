@@ -5,5 +5,8 @@ class TransactionsControllerTest < ActionDispatch::IntegrationTest
     get transactions_index_url
     assert_response :success
   end
-
+  test "should get new" do
+    get transactions_new_path
+    assert_response :success
+  end
 end
