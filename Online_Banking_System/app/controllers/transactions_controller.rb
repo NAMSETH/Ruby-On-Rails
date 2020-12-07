@@ -17,6 +17,7 @@ class TransactionsController < ApplicationController
   end
 
   def create
+    @sendingAccount = Account.find(payment_params[:sendingAccount_id])
     @recievingAccounts = Account.where(accountNumber: payment_params[:recievingAccount_id])
     @recievingAccount = @recievingAccounts.first
     if @recievingAccount.nil?
@@ -33,7 +34,6 @@ class TransactionsController < ApplicationController
           })
           if @transaction.valid?
             @transaction.save
-            redirect_to accounts_path
             # update balances
           else
             redirect_to(new_transaction_path(account_id: payment_params[:sendingAccount_id]))
@@ -56,6 +56,6 @@ class TransactionsController < ApplicationController
 
   def payment_params
     params.require(:transaction).permit(:sendingAccount_id,
-      :recievingAccount_id, :amount, :currency, :transactionNumber)
+      :recievingAccount_id, :amount, :currency, :transactionNumber, :description)
      end
 end

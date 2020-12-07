@@ -1,6 +1,7 @@
 
 <%=  form_for(@transaction, :method => 'post') do |f| %>
-<%= error_messages(f.object) %>
+
+  <h2><%= "Making payment from Account: #{@account.accountNumber}"%></h2>
   <%= f.hidden_field :sendingAccount_id  %><br>
 
   <%= f.label "Transaction number:" %>
