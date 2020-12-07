@@ -15,7 +15,7 @@ class TransactionsController < ApplicationController
 
   def create
     @sendingAccount = Account.find(payment_params[:sendingAccount_id])
-    @recievingAccounts = Account.where(accountNumber: payment_params[:recievingAccount_id])
+    @recievingAccounts = Account.where(accountNumber: payment_params[:recievingAccount_id].strip)
     @recievingAccount = @recievingAccounts.first
     if @recievingAccount.nil?
       flash.alert = "Recipient Account number not found!"
@@ -33,7 +33,8 @@ class TransactionsController < ApplicationController
             if processPayment(@transaction)
               @transaction.save
             else
-              redirect_to('transactions#payment_error')
+              flash.alert = "Payment Unsuccessful"
+              redirect_to(new_transaction_path(account_id: payment_params[:sendingAccount_id]))
             end
           else
             redirect_to(new_transaction_path(account_id: payment_params[:sendingAccount_id]))

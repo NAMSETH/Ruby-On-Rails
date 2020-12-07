@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   post '/admin/login', to: 'admin_sessions#create'
   delete '/admin/logout', to: 'admin_sessions#destroy'
 
-  get 'transactions/payment_error'
 
   get 'transactions/new'
   post 'transactions/create'

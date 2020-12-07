@@ -7,16 +7,16 @@
   <%= f.label "Transaction number:" %>
   <%= f.text_field :transactionNumber, :readonly => true %><br>
 
-  <%= f.label "The account number you want to send money to:" %>
+  <%= f.label "Pay to:" %>
   <%= f.text_field(:recievingAccount_id) %><br>
 
-  <%= f.label "The amount you want to send:" %>
+  <%= f.label "Amount:" %>
   <%= f.text_field(:amount) %><br>
 
-  <%= f.label "Choose the currency:" %>
+  <%= f.label "Currency:" %>
   <%= f.text_field(:currency) %><br>
 
-  <%= f.label "Description:" %>
+  <%= f.label "Payment Description:" %>
   <%= f.text_field(:description) %><br>
 
   <%= f.submit 'Submit' %>

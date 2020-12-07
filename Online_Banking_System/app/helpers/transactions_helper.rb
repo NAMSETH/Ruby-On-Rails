@@ -9,7 +9,7 @@ module TransactionsHelper
     else
       formatString = "$"
     end
-    formattedAmount = "#{transaction.amount}"
+    formattedAmount = '%.2f' % transaction.amount
     formatString = formatString + formattedAmount
   end
 
@@ -22,7 +22,7 @@ module TransactionsHelper
     else
       formatString = "$"
     end
-    formattedBalance = "#{account.balance}"
+    formattedBalance = '%.2f' % account.balance
     formatString = formatString + formattedBalance
   end
 

@@ -3,9 +3,9 @@
 <p>The payment was made successfully!</p>
 
 <h3>Payment Overview</h3>
-<p><%= "Transaction id #{@transaction.transactionNumber}" %></p>
-<p><%= "To #{@recievingAccount.accountNumber}" %></p>
-<p><%= "From #{@sendingAccount.accountNumber}" %></p>
-<p><%= "Amount #{@transaction.amount} #{@transaction.currency}" %></p>
+<p><%= "Transaction id: #{@transaction.transactionNumber}" %></p>
+<p><%= "To: #{@recievingAccount.accountNumber}" %></p>
+<p><%= "From: #{@sendingAccount.accountNumber}" %></p>
+<p><%= "Amount: #{formatAmount(@transaction)}" %></p>
 
 <%=  link_to "Return to Accounts View",  accounts_path %>
