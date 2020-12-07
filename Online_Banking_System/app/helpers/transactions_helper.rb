@@ -53,4 +53,12 @@ module TransactionsHelper
     end
   end
 
+  def getAccountName(transaction, sending)
+    if sending
+      Account.find(transaction.recievingAccount_id).accountName
+    else
+      Account.find(transaction.sendingAccount_id).accountName
+    end
+  end
+
 end

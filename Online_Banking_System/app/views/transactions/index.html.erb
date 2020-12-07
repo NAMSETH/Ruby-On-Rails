@@ -8,12 +8,17 @@
 </div>
 
 <table class="table">
-  <tr> <th>Date</th> <th>Description</th> <th>Amount</th> </tr>
+  <tr> <th>Date</th> <th>Account Name</th> <th>Description</th> <th>Amount</th> </tr>
   <% @transactions.each do |transaction| %>
   <tr>
     <td> <%= transaction.transactionDate %> </td>
+    <td> <%= getAccountName(transaction, transaction.sendingAccount_id == @account.id) %> </td>
     <td> <%= transaction.description %> </td>
-    <td> <%= formatAmount(transaction) %> </td>
+    <%  if transaction.sendingAccount_id == @account.id %>
+      <td style="color: red"> <%= "-#{formatAmount(transaction)}" %> </td>
+    <% else %>
+      <td style="color: green"> <%= "+#{formatAmount(transaction)}" %> </td>
+    <% end %>
   </tr>
   <% end %>
 </table>
