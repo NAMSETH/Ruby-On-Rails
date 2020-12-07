@@ -11,8 +11,9 @@ class TransactionsController < ApplicationController
   end
 
   def new
-    @account = Account.find(params[:account_id]) # Get Sending Account
-    @transaction = Transaction.new({sendingAccount_id: params[:account_id]})
+    @account = Account.find(params[:account_id]) # the sending account
+    @transaction = Transaction.new({sendingAccount_id: params[:account_id],
+      transactionNumber: generateTransactionNumber})
   end
 
   def create
@@ -23,7 +24,6 @@ class TransactionsController < ApplicationController
       redirect_to(new_transaction_path(account_id: payment_params[:sendingAccount_id]))
     else
       @id = @recievingAccount.id
-        flash.alert = @id
         @transaction = Transaction.new({
           amount: payment_params[:amount], transactionNumber: payment_params[:transactionNumber],
           currency: payment_params[:currency], sendingAccount_id: payment_params[:sendingAccount_id],
@@ -31,10 +31,7 @@ class TransactionsController < ApplicationController
           })
           @transaction.save
           redirect_to accounts_path
-
     end
-
-
   end
 
   def update

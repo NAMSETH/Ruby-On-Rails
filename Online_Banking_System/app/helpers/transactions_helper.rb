@@ -27,8 +27,14 @@ module TransactionsHelper
   end
 
 
-  def findAccountIdFromAccountNumber(accountNumber)
-    @account = Account.where(accountNumber: accountNumber)
+  def generateTransactionNumber
+    generatedValue = rand(100000000..999999999)
+    if (Transaction.where(transactionNumber: generatedValue).count > 0)
+      generateTransactionNumber
+    else
+      generatedValue
+
+    end
   end
 
 end
