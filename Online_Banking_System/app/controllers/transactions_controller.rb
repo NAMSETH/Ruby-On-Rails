@@ -13,7 +13,7 @@ class TransactionsController < ApplicationController
   def new
     @account = Account.find(params[:account_id]) # the sending account
     @transaction = Transaction.new({sendingAccount_id: params[:account_id],
-      transactionNumber: generateTransactionNumber})
+      transactionNumber: generateTransactionNumber, transactionDate: DateTime.now})
   end
 
   def create
@@ -24,13 +24,21 @@ class TransactionsController < ApplicationController
       redirect_to(new_transaction_path(account_id: payment_params[:sendingAccount_id]))
     else
       @id = @recievingAccount.id
+      amount = payment_params[:amount]
         @transaction = Transaction.new({
           amount: payment_params[:amount], transactionNumber: payment_params[:transactionNumber],
           currency: payment_params[:currency], sendingAccount_id: payment_params[:sendingAccount_id],
-          recievingAccount_id: @id, transactionNumber: payment_params[:transactionNumber]
+          recievingAccount_id: @id, transactionNumber: payment_params[:transactionNumber],
+          description: payment_params[:description], transactionDate: DateTime.now
           })
-          @transaction.save
-          redirect_to accounts_path
+          if @transaction.valid?
+            @transaction.save
+            redirect_to accounts_path
+            # update balances
+          else
+            redirect_to(new_transaction_path(account_id: payment_params[:sendingAccount_id]))
+          end
+
     end
   end
 
@@ -47,6 +55,7 @@ class TransactionsController < ApplicationController
   end
 
   def payment_params
-    params.require(:transaction).permit(:sendingAccount_id, :recievingAccount_id, :amount, :currency, :transactionNumber)
+    params.require(:transaction).permit(:sendingAccount_id,
+      :recievingAccount_id, :amount, :currency, :transactionNumber)
      end
 end
