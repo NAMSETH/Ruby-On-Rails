@@ -26,4 +26,9 @@ module TransactionsHelper
     formatString = formatString + formattedBalance
   end
 
+
+  def findAccountIdFromAccountNumber(accountNumber)
+    @account = Account.where(accountNumber: accountNumber)
+  end
+
 end
