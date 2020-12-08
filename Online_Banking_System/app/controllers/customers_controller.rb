@@ -11,7 +11,7 @@ class CustomersController < ApplicationController
     @customer = Customer.new(customer_params)
     if @customer.valid?
       @customer.save
-      redirect_to(customer_login_url)
+      redirect_to(admin_users_path)
     else
       render('new')
     end

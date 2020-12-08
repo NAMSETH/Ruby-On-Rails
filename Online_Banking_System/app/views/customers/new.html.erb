@@ -5,11 +5,10 @@
   </head>
   <body>
     <div class=container>
-        <%=  form_for(@customer, :method => 'post') do |f| %>
-
-            <%= render(:partial => 'form', :locals => {:f => f}) %>
-
-        <%= f.submit("Save Changes") %>
+        <%=  bootstrap_form_for(@customer, :method => 'post') do |f| %>
+          <%= f.text_field :customerNumber, :readonly => true, label: "Customer Number" %>
+          <%= render(:partial => 'form', :locals => {:f => f}) %>
+          <%= f.submit("Save Changes") %>
         <% end %>
     </div>
   </body>
