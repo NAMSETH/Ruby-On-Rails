@@ -1,6 +1,5 @@
 class CustomersController < ApplicationController
   include CustomersHelper
-  #before_action :redirect_if_not_logged_in, only: [:edit, :update]
   before_action :redirect_if_not_admin_or_customer, only: [:edit, :update]
 
   def new
@@ -35,11 +34,11 @@ class CustomersController < ApplicationController
   end
 
   def index
-    flash.alert = admin_logged_in?
       @customers = Customer.all
   end
 
   def show
+    redirect_to customers_path
   end
 
   def customer_params

@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class CustomerLogoutTest < ActionDispatch::IntegrationTest
-  test "logout with valid credenttials" do
+  test "logout with valid credentials" do
     get customer_login_url
     assert_response :success
     assert_not is_logged_in?

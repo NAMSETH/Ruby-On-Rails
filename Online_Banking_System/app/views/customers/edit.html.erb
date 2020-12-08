@@ -1,10 +1,21 @@
-<% if logged_in? %>
-  <%= link_to('View Accounts', accounts_path) %>
-<% else %>
-  <%= link_to('View Customers', customers_path) %>
-<% end %>
-
-<%=  bootstrap_form_for(@customer, class: 'form-horizontal') do |f| %>
-    <%= render(:partial => 'form', :locals => {:f => f}) %>
-    <%= f.submit("Save Changes") %>
-<% end %>
+<!Doctype html>
+<head>
+<head>
+<body>
+  <div>
+    <% if logged_in? %>
+      <%= link_to('View Accounts', accounts_path) %>
+    <% else %>
+      <%= link_to('View Customers', customers_path) %>
+    <% end %>
+    <%=  bootstrap_form_for(@customer, class: 'form-horizontal') do |f| %>
+    <% if logged_in? %>
+      <%= f.text_field :customerNumber, :readonly => true, label: "Customer Number" %>
+    <% else %>
+      <%= f.text_field :customerNumber, :readonly => false, label: "Customer Number" %>
+    <% end %>
+      <%= render(:partial => 'form', :locals => {:f => f}) %>
+      <%= f.submit("Save Changes") %>
+    <% end %>
+  </div>
+</body>
