@@ -1,27 +1,23 @@
-
-<%=  form_for(@transaction, :method => 'post') do |f| %>
-
+<!doctype html>
+<head>
+  <meta = "utf-8">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+</head>
+<body>
+  <br>
   <h2> <%= "Make Payment"%> </h2>
   <p> <%= "Account: #{@account.accountNumber}" %><br>
   <%= "Available Balance: #{formatBalance(@account)}" %> </p>
-
-  <%= f.hidden_field :sendingAccount_id  %><br>
-
-  <%= f.label "Transaction number:" %>
-  <%= f.text_field :transactionNumber, :readonly => true %><br>
-
-  <%= f.label "Pay to:" %>
-  <%= f.text_field(:recievingAccount_id) %><br>
-
-  <%= f.label "Amount:" %>
-  <%= f.text_field(:amount) %><br>
-
-  <%= f.label "Currency:" %>
-  <%= f.text_field(:currency) %><br>
-
-  <%= f.label "Payment Description:" %>
-  <%= f.text_field(:description) %><br>
-
-  <%= f.submit 'Submit' %>
-
-<% end %>
+  <hr>
+  <div>
+    <%=  bootstrap_form_for(@transaction, class: 'form-horizontal', :method => 'post') do |f| %>
+      <%= f.hidden_field :sendingAccount_id %><br>
+      <%= f.text_field :transactionNumber, :readonly => true, label: "Transaction Number",  style: "margin:0" %><br>
+      <%= f.text_field :recievingAccount_id, label: "To" %><br>
+      <%= f.text_field :amount, label: "Amount", style: "margin:0" %><br>
+      <%= f.select :currency,["GBP", "USD", "EUR"], label: "Currency", style: "margin:0" %><br>
+      <%= f.text_field :description, label: "Description", style: "margin:0" %><br>
+      <%= f.submit 'Submit', class: "btn btn-lg btn-primary btn-block" %>
+    <% end %>
+  </div>
+</body>
