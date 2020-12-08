@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   post '/admin/login', to: 'admin_sessions#create'
   delete '/admin/logout', to: 'admin_sessions#destroy'
 
+
+  get 'transactions/new'
+  post 'transactions/create'
+
   resources :admin_users do
     member do
       get :delete
@@ -27,6 +31,9 @@ Rails.application.routes.draw do
       get :delete
     end
   end
+
   resources :transactions
+
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

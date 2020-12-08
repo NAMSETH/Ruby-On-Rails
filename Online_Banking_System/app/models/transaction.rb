@@ -5,4 +5,6 @@ class Transaction < ApplicationRecord
   numericality: {greater_than_or_equal_to: 0, less_than_or_equal_to: 100000000}
   validates :currency, presence: true
   validates :transactionNumber, uniqueness: true, presence: true
+  validates :transactionDate, presence: true
+  validates :description, presence: true
 end
