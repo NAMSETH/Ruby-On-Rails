@@ -1,5 +1,6 @@
 class AccountsController < ApplicationController
-  before_action :redirect_if_not_logged_in, only: [:index]
+  include AccountsHelper
+    before_action :redirect_if_not_logged_in, only: [:index]
 
   def new
     @account = Account.new({:accountNumber => generateAccountNumber, balance: generateBalance})
@@ -31,11 +32,6 @@ class AccountsController < ApplicationController
     @account = Account.find_by(params[:id])
     @account.destroy
   end
-
-  def showTransactions
-
-  end
-
 
   def account_params
     params.require(:account).permit(:accountNumber,:accountName, :balance,

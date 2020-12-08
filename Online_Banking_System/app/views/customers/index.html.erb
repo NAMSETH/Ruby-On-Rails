@@ -1,0 +1,36 @@
+<!<!DOCTYPE html>
+<head>
+</head>
+<body>
+  <%= link_to("Home", admin_users_path) %>
+  <br>
+  <h2>View Customers</h2>
+  <br>
+  <div style="height: 80%; width: 100%; overflow: scroll">
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th>Customer Number</th>
+          <th>Forename</th>
+          <th>Surname</th>
+          <th>Date of Birth</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @customers.each do |customer| %>
+        <tr>
+          <td><%= customer.customerNumber %></td>
+          <td><%= customer.forename %></td>
+          <td><%= customer.surname %></td>
+          <td><%= customer.dob %></td>
+          <td>
+            <%= link_to 'Edit', edit_customer_path(customer), class: "btn btn-primary", style: "width: 100%; height:100%; margin: 1%" %>
+            <%=  %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</body>

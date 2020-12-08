@@ -1,35 +1,8 @@
 <%= error_messages(f.object) %>
-<table>
-  <tr>
-      <th>Customer Number</th>
-      <td> <%= f.text_field:customerNumber, :readonly => true %> </td>
-  </tr>
-    <tr>
-        <th>Forename</th>
-        <td> <%= f.text_field(:forename) %> </td>
-    </tr>
-    <tr>
-        <th>Surname</th>
-        <td> <%= f.text_field(:surname) %> </td>
-    </tr>
-    <tr>
-        <th>Email</th>
-        <td> <%= f.text_field(:email) %> </td>
-    </tr>
-    <tr>
-        <th>Phone</th>
-        <td> <%= f.text_field(:phone) %> </td>
-    </tr>
-    <tr>
-        <th>D.O.B</th>
-        <td> <%= f.date_select :dob, start_year: 1900, end_year: Time.now.year %> </td>
-    </tr>
-    <tr>
-        <th>Password</th>
-        <td> <%= f.password_field(:password) %> </td>
-    </tr>
-    <tr>
-        <th>Password Confirmation</th>
-        <td> <%= f.password_field :password_confirmation  %> </td>
-    </tr>
-</table>
+ <%= f.text_field :forename, label: "Forename" %>
+ <%= f.text_field :surname, label: "Surname" %>
+ <%= f.text_field :email, label: "Email" %>
+ <%= f.text_field :phone, label: "Phone" %>
+ <%= f.date_select :dob, start_year: 1900, end_year: Time.now.year, label: "D.O.B" %>
+ <%= f.password_field :password, label: "Password" %>
+ <%= f.password_field :password_confirmation, label: "Password Confirmation" %>
