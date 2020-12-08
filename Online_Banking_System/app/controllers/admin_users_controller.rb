@@ -1,6 +1,10 @@
 class AdminUsersController < ApplicationController
   before_action :redirect_if_not_admin, only: [:new, :create]
 
+  def index
+    @customers = Customer.all
+  end
+
   def new
     @admin = AdminUser.new
   end
