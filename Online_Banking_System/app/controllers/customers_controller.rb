@@ -1,6 +1,7 @@
 class CustomersController < ApplicationController
   include CustomersHelper
   before_action :redirect_if_not_admin_or_customer, only: [:edit, :update]
+  before_action :redirect_if_not_admin, only: [:index]
 
   def new
     @customer = Customer.new({:customerNumber => generateCustomerNumber})
