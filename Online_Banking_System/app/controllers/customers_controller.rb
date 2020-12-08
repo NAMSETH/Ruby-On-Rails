@@ -1,6 +1,7 @@
 class CustomersController < ApplicationController
   include CustomersHelper
-  before_action :redirect_if_not_logged_in, only: [:edit, :update]
+  #before_action :redirect_if_not_logged_in, only: [:edit, :update]
+  before_action :redirect_if_not_admin_or_customer, only: [:edit, :update]
 
   def new
     @customer = Customer.new({:customerNumber => generateCustomerNumber})
@@ -8,7 +9,6 @@ class CustomersController < ApplicationController
 
   def create
     @customer = Customer.new(customer_params)
-
     if @customer.valid?
       @customer.save
       redirect_to(customer_login_url)
@@ -19,9 +19,12 @@ class CustomersController < ApplicationController
 
   def update
     @customer = Customer.find(params[:id])
-    puts @customer
     if @customer.update_attributes(customer_params)
-      redirect_to accounts_path
+      if logged_in?
+        redirect_to accounts_path
+      else
+        redirect_to customers_path
+      end
     else
       render 'edit'
     end
@@ -29,6 +32,11 @@ class CustomersController < ApplicationController
 
   def edit
     @customer = Customer.find(params[:id])
+  end
+
+  def index
+    flash.alert = admin_logged_in?
+      @customers = Customer.all
   end
 
   def show

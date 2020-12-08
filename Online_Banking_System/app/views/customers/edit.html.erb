@@ -1,9 +1,10 @@
-<%=  link_to('Home', accounts_path)%>
+<% if logged_in? %>
+  <%= link_to('View Accounts', accounts_path) %>
+<% else %>
+  <%= link_to('View Customers', customers_path) %>
+<% end %>
 
-<%=  form_for(@customer) do |f| %>
-
+<%=  bootstrap_form_for(@customer, class: 'form-horizontal') do |f| %>
     <%= render(:partial => 'form', :locals => {:f => f}) %>
-
-<%= f.submit("Save Changes") %>
-
+    <%= f.submit("Save Changes") %>
 <% end %>

@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-
-  get 'admin_users/new'
-  get 'admin_user/new'
   root 'customer_session#new'
 
   get '/customer/login', to: 'customer_session#new'
