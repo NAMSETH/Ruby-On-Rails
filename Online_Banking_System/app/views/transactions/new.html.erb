@@ -1,7 +1,10 @@
 
 <%=  form_for(@transaction, :method => 'post') do |f| %>
 
-  <h2><%= "Making payment from Account: #{@account.accountNumber}"%></h2>
+  <h2> <%= "Make Payment"%> </h2>
+  <p> <%= "Account: #{@account.accountNumber}" %><br>
+  <%= "Available Balance: #{formatBalance(@account)}" %> </p>
+
   <%= f.hidden_field :sendingAccount_id  %><br>
 
   <%= f.label "Transaction number:" %>
