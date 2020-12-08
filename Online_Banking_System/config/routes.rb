@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'admin_users/new'
-  get 'admin_user/new'
   root 'customer_session#new'
 
   get '/customer/login', to: 'customer_session#new'
@@ -11,10 +9,6 @@ Rails.application.routes.draw do
   get '/admin/login', to: 'admin_sessions#new'
   post '/admin/login', to: 'admin_sessions#create'
   delete '/admin/logout', to: 'admin_sessions#destroy'
-
-
-  get 'transactions/new'
-  post 'transactions/create'
 
   resources :admin_users do
     member do

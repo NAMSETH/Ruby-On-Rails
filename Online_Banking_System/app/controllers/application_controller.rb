@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   include AccountsHelper
   include CustomersHelper
   include AdminSessionsHelper
+  include AdminUsersHelper
+  include TransactionsHelper
 
   def redirect_if_not_logged_in
     unless logged_in?

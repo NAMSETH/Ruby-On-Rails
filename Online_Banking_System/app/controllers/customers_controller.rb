@@ -1,5 +1,4 @@
 class CustomersController < ApplicationController
-  include CustomersHelper
   before_action :redirect_if_not_logged_in, only: [:edit, :update]
 
   def new

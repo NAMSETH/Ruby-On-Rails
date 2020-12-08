@@ -4,7 +4,7 @@ module AccountsHelper
   end
 
   def generateBalance
-    balanc = rand(100..100000)
+    balance = rand(100..100000)
   end
 
   def formatBalance(account)

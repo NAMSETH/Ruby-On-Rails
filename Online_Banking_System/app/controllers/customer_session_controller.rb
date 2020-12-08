@@ -1,5 +1,4 @@
 class CustomerSessionController < ApplicationController
-
   def new
     if logged_in?
       redirect_to(accounts_path)

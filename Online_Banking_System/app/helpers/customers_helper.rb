@@ -6,8 +6,7 @@ module CustomersHelper
       generateCustomerNumber
     else
       generatedValue
-
     end
   end
-
+  
 end

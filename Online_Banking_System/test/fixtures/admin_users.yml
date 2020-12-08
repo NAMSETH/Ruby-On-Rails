@@ -3,7 +3,3 @@
 admin:
   email: admin@gmail.com
   password_digest: <%= AdminUser.digest("12345678") %>
-
-two:
-  email: MyString
-  password_digest: MyString

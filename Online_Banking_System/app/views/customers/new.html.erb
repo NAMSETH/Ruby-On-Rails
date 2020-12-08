@@ -4,7 +4,7 @@
     <title>New customer information</title>
   </head>
   <body>
-    <div class=container>
+    <div class ="form-account">
         <%=  form_for(@customer, :method => 'post') do |f| %>
 
             <%= render(:partial => 'form', :locals => {:f => f}) %>
