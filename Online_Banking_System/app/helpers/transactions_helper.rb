@@ -42,8 +42,10 @@ module TransactionsHelper
     if sendingAccount == recievingAccount
       false
     else
-      sendingAccount.balance = sendingAccount.balance - transaction.amount
-      recievingAccount.balance = recievingAccount.balance + transaction.amount
+      sendingAccount.balance = sendingAccount.balance -
+      currencyConversion(transaction.amount, sendingAccount.currency, transaction.currency)
+      recievingAccount.balance = recievingAccount.balance +
+      currencyConversion(transaction.amount, recievingAccount.currency, transaction.currency)
       if sendingAccount.balance < 0 || recievingAccount.balance < 0
         false
       end
@@ -64,5 +66,23 @@ module TransactionsHelper
       Account.find(transaction.sendingAccount_id).accountName
     end
   end
+
+  def currencyConversion(amount, accountCurrency, currency)
+    if (accountCurrency == "GBP" && currency == "EUR")
+      amount * 1.10
+    elsif (accountCurrency == "GBP" && currency == "USD")
+      amount * 1.33
+    elsif (accountCurrency == "EUR" && currency == "USD")
+      amount * 1.33
+    elsif (accountCurrency == "EUR" && currency == "GBP")
+      amount * 0.91
+    elsif (accountCurrency == "USD" && currency == "GBP")
+      amount * 0.75
+    elsif (accountCurrency == "USD" && currency == "EUR")
+      amount * 0.82
+    else
+      amount
+  end
+end
 
 end
