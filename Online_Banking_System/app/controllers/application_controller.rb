@@ -16,4 +16,11 @@ class ApplicationController < ActionController::Base
       redirect_to admin_login_path
     end
   end
+
+  def redirect_if_not_admin_or_customer
+    unless logged_in? || admin_logged_in?
+      redirect_to customer_login_url
+    end
+  end
+
 end
