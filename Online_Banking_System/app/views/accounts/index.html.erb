@@ -1,28 +1,40 @@
 <!DOCTYPE html>
+<%= stylesheet_link_tag "accounts.css" %>
 <html>
   <head>
     <title>Accounts</title>
   </head>
-<%=  link_to('Edit Personal Details', edit_customer_path(current_user)) %>
-  <br>
-  <h1>Hello, <%= "#{current_user.forename} #{current_user.surname}" %></h1>
-  <br>
-  <h2><B>Accounts</B></h2>
-  <hr>
-    <% @accounts.each do |account| %>
-    <tr>
-      <td><B><%= account.accountName %></B></td>
+  <body>
+    <%=  link_to('Edit Personal Details', edit_customer_path(current_user)) %>
+    <%=  link_to('Create a new account', new_account_path) %>
+    <div>
       <br>
-      <td><%= "Account Number: #{account.accountNumber}" %></td>
+      <h1>Hello, <%= "#{current_user.forename} #{current_user.surname}" %></h1>
       <br>
-      <td><%= formatBalance(account) %></td>
-      <br><br>
-      <td>
-        <%= link_to('View Transactions', transactions_path(account_id: account.id)) %>
-      </td>
-      <hr>
-    <tr>
-    <% end %>
-
-<%=  link_to('Create a new account', new_account_path) %>
+      <h2><B>Accounts</B></h2>
+      <br>
+      <div style="height: 60%; overflow: scroll">
+        <table class="table">
+          <tbody>
+            <% @accounts.each do |account| %>
+            <tr>
+              <td>
+                <h3><B><%= account.accountName %></B></h3>
+                <p><%= "Account Number: #{account.accountNumber}" %></p>
+                <p><B><%= formatBalance(account) %></B></p>
+              </td>
+              <td style="align: left">
+                <%= link_to 'View Transactions', transactions_path(account_id: account.id),
+                class: "btn btn-primary", style: "width: 100%; height:100%; margin: 1%" %>
+                <br><br>
+                <%= link_to 'Make Payment', new_transaction_path(account_id: account.id),
+                class: "btn btn-primary", style: "width: 100%; height:100%; margin: 1%" %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
 </html>
