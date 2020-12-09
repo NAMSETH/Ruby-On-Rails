@@ -13,7 +13,6 @@ class CustomersController < ApplicationController
       @customer.save
       redirect_to(admin_users_path)
     else
-      print "Error"
       render('new')
     end
   end
