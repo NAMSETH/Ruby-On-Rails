@@ -38,7 +38,9 @@ class CustomersController < ApplicationController
       @customers = Customer.all
   end
 
-  def show
+  def delete
+    @customer = Customer.find(params[:id])
+    @customer.destroy
     redirect_to customers_path
   end
 
