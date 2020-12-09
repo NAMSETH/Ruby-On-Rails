@@ -1,13 +1,17 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  accountNumber: MyString
-  accountName: MyString
-  balance: 1
-  currency: MyString
+reward:
+  id: 12345678
+  accountNumber: "87654321"
+  accountName: "Reward"
+  balance: 100.00
+  currency: "GBP"
+  customer_id: 2020
 
-two:
-  accountNumber: MyString
-  accountName: MyString
-  balance: 1
-  currency: MyString
+basic:
+  id: 11223344
+  accountNumber: "11225566"
+  accountName: "Basic"
+  balance: 200.00
+  currency: "EUR"
+  customer_id: 2020

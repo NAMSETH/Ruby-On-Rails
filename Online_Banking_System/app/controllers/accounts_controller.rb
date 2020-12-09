@@ -1,6 +1,7 @@
 class AccountsController < ApplicationController
   include AccountsHelper
     before_action :redirect_if_not_logged_in, only: [:index]
+    before_action :redirect_if_not_admin, only: [:new, :create]
 
   def new
     @account = Account.new({:accountNumber => generateAccountNumber, balance: generateBalance})
@@ -20,9 +21,6 @@ class AccountsController < ApplicationController
   def index
     @customer = current_user
     @accounts = @customer.accounts
-  end
-
-  def show
   end
 
   def delete
