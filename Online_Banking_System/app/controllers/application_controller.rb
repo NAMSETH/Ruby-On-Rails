@@ -25,4 +25,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def redirect_if_logged_in
+    if logged_in?
+      redirect_to accounts_path
+    elsif admin_logged_in?
+      redirect_to admin_users_path
+    end
+  end
+
 end

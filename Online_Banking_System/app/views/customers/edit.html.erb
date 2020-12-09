@@ -2,7 +2,6 @@
 <head>
 <head>
 <body>
-  <div>
     <% if logged_in? %>
       <%= link_to('View Accounts', accounts_path) %>
     <% else %>
@@ -17,5 +16,4 @@
       <%= render(:partial => 'form', :locals => {:f => f}) %>
       <%= f.submit("Save Changes") %>
     <% end %>
-  </div>
 </body>

@@ -1,5 +1,5 @@
 class TransactionsController < ApplicationController
-  before_action :redirect_if_not_logged_in, only: [:index, :new, :create, ]
+  before_action :redirect_if_not_logged_in, only: [:index, :new, :create,]
   def index
     @account = Account.find(params[:account_id])
     id  = @account.id
