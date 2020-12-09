@@ -1,5 +1,4 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 mary:
   id: 2
   customerNumber: 41228637263
@@ -16,5 +15,15 @@ john:
   forename: "john"
   surname: "smith"
   phone: "44123451234"
+  dob: "10/11/1996"
+  password_digest: <%= Customer.digest("12345678") %>
+
+jack:
+  id: 2020
+  customerNumber: 123404321
+  email: "jackm@gmail.com"
+  forename: "jack"
+  surname: "smith"
+  phone: "44451234456"
   dob: "10/11/1996"
   password_digest: <%= Customer.digest("12345678") %>

@@ -34,6 +34,7 @@ class TransactionsController < ApplicationController
               @transaction.save
             else
               flash.alert = "Payment Unsuccessful"
+              print "oh no"
               redirect_to(new_transaction_path(account_id: payment_params[:sendingAccount_id]))
             end
           else

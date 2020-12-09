@@ -1,2 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+validTransaction:
+  id: 2233
+  transactionNumber: "55668800"
+  transactionDate: "2020/08/03"
+  amount: 50.00
+  currency: "GBP"
+  sendingAccount_id: 101010
+  recievingAccount_id: 101011
+  description: "Refund"
