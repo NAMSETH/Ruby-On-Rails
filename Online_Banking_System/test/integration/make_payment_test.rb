@@ -14,33 +14,54 @@ class MakePaymentTest < ActionDispatch::IntegrationTest
       accountNumber: "11122233", balance: 1234.67, currency: "GBP"})
       @customer.accounts << @account2
       @customer.save
-
   end
 
-  test "make valid payment" do
+  test "Valid payment" do
     get customer_login_url
     assert_response :success
-    post customer_login_url, params: { session: {email: "mary@gmail.com", password: '12345678'}}
+    post customer_login_url, params: { session: {email: "mary@gmail.com",
+       password: '12345678'}}
     assert_redirected_to accounts_path
     follow_redirect!
     assert_template 'accounts/index'
     get new_transaction_path(account_id: 12345678)
     assert_template 'transactions/new'
-    post transactions_path, params: {transaction: { sendingAccount_id: 20, recievingAccount_id: "11122233", transactionNumber: "3458790", amount: 21.23, currency: "GBP"}}
+    post transactions_path, params: {transaction: { sendingAccount_id: 20,
+      recievingAccount_id: "11122233", transactionNumber: "3458790",
+      amount: 21.23, currency: "GBP"}}
     assert_response :success
     assert_template 'transactions/create'
   end
 
-  test "make invalid payment and render new again" do
+  test "Invalid payment which renders new view" do
     get customer_login_url
     assert_response :success
-    post customer_login_url, params: { session: {email: "mary@gmail.com", password: '12345678'}}
+    post customer_login_url, params: { session: {email: "mary@gmail.com",
+       password: '12345678'}}
     assert_redirected_to accounts_path
     follow_redirect!
     assert_template 'accounts/index'
     get new_transaction_path(account_id: 12345678)
     assert_template 'transactions/new'
-    post transactions_path, params: {transaction: { sendingAccount_id: 20, recievingAccount_id: "11122233", transactionNumber: "3458790", amount: -21.23, currency: "GBP"}}
+    post transactions_path, params: {transaction: { sendingAccount_id: 20,
+      recievingAccount_id: "11122233", transactionNumber: "3458790",
+      amount: -21.23, currency: "GBP"}}
+    assert_redirected_to'/transactions/new?account_id=20'
+  end
+
+  test "Invalid payment with the sending and recieving account the same" do
+    get customer_login_url
+    assert_response :success
+    post customer_login_url, params: { session: {email: "mary@gmail.com",
+      password: '12345678'}}
+    assert_redirected_to accounts_path
+    follow_redirect!
+    assert_template 'accounts/index'
+    get new_transaction_path(account_id: 12345678)
+    assert_template 'transactions/new'
+    post transactions_path, params: {transaction: { sendingAccount_id: 20,
+      recievingAccount_id: "12345678", transactionNumber: "3458790",
+      amount: -21.23, currency: "GBP"}}
     assert_redirected_to'/transactions/new?account_id=20'
   end
 end
