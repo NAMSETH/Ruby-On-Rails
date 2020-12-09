@@ -2,7 +2,6 @@ require 'test_helper'
 
 class CustomersControllerTest < ActionDispatch::IntegrationTest
 
-
   test "Able to access customers/index when logged in as an admin" do
     get admin_login_url
     assert_response :success
