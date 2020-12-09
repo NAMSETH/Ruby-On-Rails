@@ -6,5 +6,4 @@ class Transaction < ApplicationRecord
   validates :currency, presence: true
   validates :transactionNumber, uniqueness: true, presence: true
   validates :transactionDate, presence: true
-  validates :description, presence: true
 end

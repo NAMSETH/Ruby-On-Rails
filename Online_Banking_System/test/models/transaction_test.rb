@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TransactionTest < ActiveSupport::TestCase 
+class TransactionTest < ActiveSupport::TestCase
     def setup
         @customer = Customer.new({id: 1, customerNumber: 1234567867,
        email: "peter123@gmail.com", forename: "peter", surname: "smith",
@@ -26,7 +26,7 @@ class TransactionTest < ActiveSupport::TestCase
 
     test "valid transaction with all fields entered" do
         assert @transaction.valid?
-    end 
+    end
 
     test "valid transaction with amount being zero" do
         @transaction.amount = 0.00
@@ -43,32 +43,27 @@ class TransactionTest < ActiveSupport::TestCase
         assert_not @transaction.valid?
     end
 
-    test "invalid transaction with negitive amount" do 
+    test "invalid transaction with negitive amount" do
         @transaction.amount = -1.56
         assert_not @transaction.valid?
     end
 
-    test "invalid transaction without a transactionNumber" do 
+    test "invalid transaction without a transactionNumber" do
         @transaction.transactionNumber = ""
         assert_not @transaction.valid?
     end
 
-    test "invalid transaction without a sending Account linked" do 
+    test "invalid transaction without a sending Account linked" do
         @transaction.sendingAccount = nil
         assert_not @transaction.valid?
     end
 
-    test "invalid transaction without a recieving Account linked" do 
+    test "invalid transaction without a recieving Account linked" do
         @transaction.recievingAccount = nil
         assert_not @transaction.valid?
     end
 
-    test "invalid transaction without a desciription" do 
-        @transaction.description = ""
-        assert_not @transaction.valid?
-    end
-
-    test "invalid transaction with non unique transaction number" do 
+    test "invalid transaction with non unique transaction number" do
         @duplicate = Transaction.new({id:1010,
             transactionNumber: "00667788523",
             transactionDate: Date.new(2020,11,04),
@@ -82,29 +77,29 @@ class TransactionTest < ActiveSupport::TestCase
         assert_not @transaction.valid?
     end
 
-    test "valid transaction with currency GBP" do 
+    test "valid transaction with currency GBP" do
         @transaction.currency = "GBP"
         assert @transaction.valid?
     end
 
-    test "valid transaction with currency USD" do 
+    test "valid transaction with currency USD" do
         @transaction.currency = "USD"
         assert @transaction.valid?
     end
 
-    test "valid transaction with currency EUR" do 
+    test "valid transaction with currency EUR" do
         @transaction.currency = "EUR"
         assert @transaction.valid?
     end
 
-    test "invalid transaction with no currency specified" do 
+    test "invalid transaction with no currency specified" do
         @transaction.currency = ""
         assert_not @transaction.valid?
         @transaction.currency = nil
         assert_not @transaction.valid?
     end
 
-    test "valid transaction with amount rounded" do 
+    test "valid transaction with amount rounded" do
         @transaction.amount = 234.567876050505
         assert @transaction.amount = 23.57
     end
