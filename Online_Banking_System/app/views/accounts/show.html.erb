@@ -1,0 +1,32 @@
+<head>
+    <title>Accounts</title>
+</head>
+<body>
+  <br>
+  <h1>View Accounts</h1>
+  <br>
+  <div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Account Number</th>
+          <th>Account Name</th>
+          <th>Currency</th>
+          <th>Balance</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @accounts.each do |account| %>
+        <tr>
+          <td><%= account.accountNumber %></td>
+          <td><%= account.accountName %></td>
+          <td><%= account.currency %></td>
+          <td><%= formatBalance(account) %></td>
+          <td><%= link_to 'Delete', delete_account_path(account), class: "btn btn-primary", style: "height:100%; margin: 1" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</body>

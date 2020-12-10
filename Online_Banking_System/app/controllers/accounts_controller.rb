@@ -1,6 +1,6 @@
 class AccountsController < ApplicationController
-  include AccountsHelper
-    before_action :redirect_if_not_logged_in, only: [:index]
+  include AccountsHelper, CustomerSessionHelper
+    before_action :redirect_if_not_admin_or_customer, only: [:index]
     before_action :redirect_if_not_admin, only: [:new, :create]
 
   def new
@@ -17,6 +17,11 @@ class AccountsController < ApplicationController
     else
       render('new')
     end
+  end
+
+  def show
+    @customer = Customer.find(params[:id])
+    @accounts = @customer.accounts
   end
 
   def index
