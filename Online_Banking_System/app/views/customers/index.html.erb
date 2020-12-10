@@ -2,10 +2,13 @@
 <head>
 </head>
 <body>
-  <%= link_to("Home", admin_users_path) %>
   <br>
-  <h2>View Customers</h2>
+  <h1>View Customers</h1>
+  <hr>
   <br>
+  <% if @customers.empty? %>
+  <h2>Sorry! There are currently no customers in the system!</h2>
+  <% else %>
   <div style="height: 80%; width: 100%; overflow: scroll">
     <table class="table table-striped">
       <thead class="thead-dark">
@@ -33,4 +36,5 @@
       </tbody>
     </table>
   </div>
+  <% end %>
 </body>

@@ -1,29 +1,15 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <title>Create new admin</title>
-  </head>
-  <body>
-<h1>register</h1>
-<% if @admin.errors.any? %>
-<ul>
-  <% @admin.errors.full_messages.each do |message| %>
-  <li><%= message %></li>
-  <% end %>
-</ul>
-<% end %>
-<%= form_for @admin, url: admin_users_path, method: 'post', class: "form" do |f| %>
-  <p>
-    <%= f.label :email %>
+<head>
+  <title>Create new admin</title>
+</head>
+<body>
+  <br>
+  <h1>Add new Administrator</h1>
+  <hr>
+  <%= bootstrap_form_for @admin, url: admin_users_path, method: 'post', class: "form" do |f| %>
     <%= f.text_field :email %>
-  </p>
-  <p>
-    <%= f.label :password %>
     <%= f.password_field :password %>
-  </p>
-  <p>
-    <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %>
-  </p>
-  <p><%= f.button "submit" %></p>
-<% end %>
+    <%= f.button "submit", class: 'btn btn-lg btn-primary btn-block' %>
+  <% end %>
+</body>
