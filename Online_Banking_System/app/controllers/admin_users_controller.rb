@@ -1,5 +1,5 @@
 class AdminUsersController < ApplicationController
-  before_action :redirect_if_not_admin, only: [:new, :create]
+  before_action :redirect_if_not_admin, only: [:new, :create, :index]
 
   def index
   end

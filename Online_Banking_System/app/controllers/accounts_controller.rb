@@ -1,7 +1,7 @@
 class AccountsController < ApplicationController
   include AccountsHelper, CustomerSessionHelper
     before_action :redirect_if_not_admin_or_customer, only: [:index]
-    before_action :redirect_if_not_admin, only: [:new, :create]
+    before_action :redirect_if_not_admin, only: [:new, :create, :show]
 
   def new
     @account = Account.new({:accountNumber => generateAccountNumber,
@@ -30,11 +30,10 @@ class AccountsController < ApplicationController
   end
 
   def delete
-  end
-
-  def destroy
-    @account = Account.find_by(params[:id])
+    @account = Account.find(params[:id])
+    @customer = Customer.find_by(id: @account.customer_id)
     @account.destroy
+    redirect_to account_path(@customer)
   end
 
   def account_params
