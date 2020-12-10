@@ -2,11 +2,6 @@
 <head>
 <head>
 <body>
-    <% if logged_in? %>
-      <%= link_to('View Accounts', accounts_path) %>
-    <% else %>
-      <%= link_to('View Customers', customers_path) %>
-    <% end %>
     <%=  bootstrap_form_for(@customer, class: 'form-horizontal') do |f| %>
     <% if logged_in? %>
       <%= f.text_field :customerNumber, :readonly => true, label: "Customer Number" %>
