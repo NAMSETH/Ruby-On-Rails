@@ -5,7 +5,6 @@
     <title>Accounts</title>
   </head>
   <body>
-    <%=  link_to('Edit Personal Details', edit_customer_path(current_user)) %>
     <div>
       <br>
       <h1>Hello, <%= "#{current_user.forename} #{current_user.surname}" %></h1>
