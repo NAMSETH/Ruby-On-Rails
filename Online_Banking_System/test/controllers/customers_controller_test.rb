@@ -84,4 +84,29 @@ class CustomersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to admin_login_url
   end
 
+  test "Unable to access customers/delete when logged in as a customer" do
+    get customer_login_url
+    post customer_login_url, params: { session: {email: "mary@gmail.com",
+       password: '12345678'}}
+    assert is_logged_in?
+    get '/customers/2/delete'
+    assert_redirected_to admin_login_url
+  end
+
+  test "Unable to access customers/delete when not logged in as an admin" do
+    get customer_login_url
+    assert_not is_admin_logged_in?
+    get '/customers/2/delete'
+    assert_redirected_to admin_login_url
+  end
+
+  test "Able to access customers/delete when logged in as an admin" do
+    get admin_login_url
+    post admin_login_url, params: { session: {email: "admin@gmail.com",
+      password: '12345678'}}
+      assert is_admin_logged_in?
+    get '/customers/2/delete'
+    assert_redirected_to customers_path
+  end
+
 end

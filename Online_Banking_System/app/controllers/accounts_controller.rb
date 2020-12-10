@@ -4,7 +4,8 @@ class AccountsController < ApplicationController
     before_action :redirect_if_not_admin, only: [:new, :create]
 
   def new
-    @account = Account.new({:accountNumber => generateAccountNumber, balance: generateBalance})
+    @account = Account.new({:accountNumber => generateAccountNumber,
+      balance: generateBalance})
   end
 
   def create

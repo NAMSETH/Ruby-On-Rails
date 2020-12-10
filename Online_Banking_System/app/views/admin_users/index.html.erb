@@ -2,6 +2,21 @@
 <head>
 </head>
 <body>
-  <%= link_to "View Customers", customers_path %>
-  <%= link_to "Add Customer", new_customer_path %>
+  <br>
+  <h1>Admin Area</h1>
+  <hr>
+  <br>
+  <div style="justify-content: center; width: 100%">
+    <table>
+      <thead>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= link_to "View Customers", customers_path, class: "btn btn-primary", style: "width:100%; height:100%; margin: 10%"%></td>
+          <td><%= link_to "Add Customer", new_customer_path, class: "btn btn-primary", style: "width: 100%; height:100%; margin: 10%" %></td>
+          <td><%= link_to "Add Administrator", new_admin_user_path, class: "btn btn-primary", style: "width: 100%; height:100%; margin: 10%" %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </body>

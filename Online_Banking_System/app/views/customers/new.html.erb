@@ -4,6 +4,9 @@
     <title>New customer information</title>
   </head>
   <body>
+    <br>
+    <h1>Add New Customer</h1>
+    <hr>
     <div class=container>
         <%=  bootstrap_form_for(@customer, :method => 'post') do |f| %>
           <%= f.text_field :customerNumber, :readonly => true, label: "Customer Number" %>

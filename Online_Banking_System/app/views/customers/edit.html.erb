@@ -1,12 +1,11 @@
 <!Doctype html>
 <head>
-<head>
+</head>
 <body>
-    <% if logged_in? %>
-      <%= link_to('View Accounts', accounts_path) %>
-    <% else %>
-      <%= link_to('View Customers', customers_path) %>
-    <% end %>
+  <br>
+  <h1>Edit Customer Details</h1>
+  <hr>
+  <br>
     <%=  bootstrap_form_for(@customer, class: 'form-horizontal') do |f| %>
     <% if logged_in? %>
       <%= f.text_field :customerNumber, :readonly => true, label: "Customer Number" %>
@@ -14,6 +13,6 @@
       <%= f.text_field :customerNumber, :readonly => false, label: "Customer Number" %>
     <% end %>
       <%= render(:partial => 'form', :locals => {:f => f}) %>
-      <%= f.submit("Save Changes") %>
+      <%= f.submit "Save Changes", class: 'btn btn-lg btn-primary btn-block' %>
     <% end %>
 </body>
