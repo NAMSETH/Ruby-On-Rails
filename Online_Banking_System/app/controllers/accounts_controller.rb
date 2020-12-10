@@ -13,7 +13,7 @@ class AccountsController < ApplicationController
     @account = Account.new(account_params)
     @customer_account.accounts << @account
     if @account.save && generateTransactionHistory(@account)
-        redirect_to(accounts_path)
+        redirect_to(admin_users_path)
     else
       render('new')
     end
