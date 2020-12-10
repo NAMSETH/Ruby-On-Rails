@@ -9,7 +9,7 @@ class AccountsController < ApplicationController
   end
 
   def create
-    @customer_account = Customer.find_by(:customerNumber => params[:customerNumber])
+    @customer_account = Customer.find_by(:customerNumber => params[:customerNumber].strip)
     @account = Account.new(account_params)
     @customer_account.accounts << @account
     if @account.save && generateTransactionHistory(@account)

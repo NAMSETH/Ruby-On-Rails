@@ -8,6 +8,8 @@
   <br>
   <% if @customers.empty? %>
   <h2>Sorry! There are currently no customers in the system!</h2>
+  <br>
+  <p>Add a customer <%= link_to 'here', new_customer_path %></p>
   <% else %>
   <div style="height: 80%; width: 100%; overflow: scroll">
     <table class="table table-striped">
