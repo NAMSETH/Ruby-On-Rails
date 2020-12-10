@@ -30,9 +30,9 @@
           <td><%= customer.surname %></td>
           <td><%= customer.dob %></td>
           <td>
-            <%= link_to 'Edit', edit_customer_path(customer), class: "btn btn-primary", style: "height:100%; margin: 1%" %>
-            <%=  link_to 'Delete', delete_customer_path(customer), class: "btn btn-primary", style: "height:100%; margin: 1%"%>
-            <%=  link_to 'Accounts', account_path(customer), class: "btn btn-primary", style: "height:100%; margin: 1%"%>
+            <%= link_to 'Edit', edit_customer_path(customer), class: "btn btn-primary btn-block", style: "height:100%; margin: 1%" %>
+            <%=  link_to 'Delete', delete_customer_path(customer), class: "btn btn-primary btn-block", style: "height:100%; margin: 1%"%>
+            <%=  link_to 'Accounts', account_path(customer), class: "btn btn-primary btn-block", style: "height:100%; margin: 1%"%>
           </td>
         </tr>
         <% end %>
