@@ -1,9 +1,7 @@
 class CustomerSessionController < ApplicationController
+before_action :redirect_if_logged_in, only: [:new, :create]
 
   def new
-    if logged_in?
-      redirect_to(accounts_path)
-    end
   end
 
   def create

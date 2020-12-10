@@ -1,8 +1,6 @@
 class AdminSessionsController < ApplicationController
+  before_action :redirect_if_logged_in, only: [:new, :create]
   def new
-    if admin_logged_in?
-      redirect_to(admin_users_path)
-    end
   end
 
   def create

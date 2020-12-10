@@ -9,7 +9,6 @@
     <!-- Bootstrap core CSS -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
-
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -31,8 +30,11 @@
   <body class = "login-body">
   <%= bootstrap_form_with(class: 'form-signin', url: customer_login_path, scope: :session, local: true) do |f| %>
   <div class="text-center mb-4">
-    <img class="mb-4" src="/docs/4.5/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-    <h1 class="h3 mb-3 font-weight-normal">Log in</h1>
+    <svg width="4em" height="4em" viewBox="0 0 16 16" class="bi bi-credit-card-2-back-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5H0V4zm11.5 1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-2z"/>
+      <path d="M0 11v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1H0z"/>
+    </svg>
+  <h1 class="h3 mb-3 font-weight-normal">Log in</h1>
   </div>
     <%= f.text_field :email, class:"form-control" %>
     <%= f.password_field :password, class:"form-control" %>

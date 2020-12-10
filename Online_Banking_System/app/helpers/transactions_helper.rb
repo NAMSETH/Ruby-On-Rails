@@ -82,7 +82,7 @@ module TransactionsHelper
       amount * 0.82
     else
       amount
+    end
   end
-end
 
 end

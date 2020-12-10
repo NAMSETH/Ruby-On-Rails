@@ -1,11 +1,14 @@
-<h2>Success!</h2>
+<body>
+  <div class ="starter-template">
+    <h2>Success!</h2>
 
-<p>The payment was made successfully!</p>
+    <p>The payment was made successfully!</p>
 
-<h3>Payment Overview</h3>
-<p><%= "Transaction id: #{@transaction.transactionNumber}" %></p>
-<p><%= "To: #{@recievingAccount.accountNumber}" %></p>
-<p><%= "From: #{@sendingAccount.accountNumber}" %></p>
-<p><%= "Amount: #{formatAmount(@transaction)}" %></p>
-
-<%=  link_to "Return to Accounts View",  accounts_path %>
+    <h3>Payment Overview</h3>
+    <p><%= "Transaction id: #{@transaction.transactionNumber}" %></p>
+    <p><%= "To: #{@recievingAccount.accountNumber}" %></p>
+    <p><%= "From: #{@sendingAccount.accountNumber}" %></p>
+    <p><%= "Amount: #{formatAmount(@transaction)}" %></p>
+    <%=  link_to "Return to Accounts View",  accounts_path %>
+  </div>
+</body>
