@@ -40,4 +40,30 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
     assert_template 'accounts/new'
   end
 
+  test "Able to access accounts/show when logged in as an admin" do
+    get admin_login_url
+    post admin_login_url, params: { session: {email: "admin@gmail.com",
+      password: '12345678'}}
+    assert is_admin_logged_in?
+    post '/accounts/show', params: {id: 2}
+    assert_template 'accounts/show'
+  end
+
+  test "Unable to access accounts/show when not logged in" do
+    get admin_login_url
+    assert_not is_admin_logged_in?
+    post '/accounts/show', params: {id: 2}
+    assert_redirected_to admin_login_url
+  end
+
+
+  test "Unable to access accounts/show when logged in as a customer" do
+    get customer_login_url
+    post customer_login_url, params: { session: {email: "mary@gmail.com",
+       password: '12345678'}}
+    assert is_logged_in?
+    post '/accounts/show', params: {id: 2}
+    assert_redirected_to admin_login_url
+  end
+
 end
