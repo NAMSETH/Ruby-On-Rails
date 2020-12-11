@@ -12,7 +12,8 @@ class AccountsController < ApplicationController
     @customer_account = Customer.find_by(:customerNumber => params[:customerNumber])
     @account = Account.new(account_params)
     @customer_account.accounts << @account
-    if @account.save && generateTransactionHistory(@account)
+    if @account.valid? && generateTransactionHistory(@account)
+        @account.save
         redirect_to(accounts_path)
     else
       render('new')

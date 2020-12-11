@@ -33,7 +33,7 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
 
   test "Able to access accounts/new when logged in as an admin" do
     get admin_login_url
-    post admin_login_url, params: { session: {email: "admin@gmail.com",
+    post admin_login_url, params: { session: {email: "admin1@gmail.com",
       password: '12345678'}}
     assert is_admin_logged_in?
     get new_account_path
