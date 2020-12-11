@@ -17,4 +17,9 @@ class ActiveSupport::TestCase
   def is_admin_logged_in?
     !session[:admin_user_id].nil?
   end
+
+  #From https://stackoverflow.com/questions/9861075/how-can-i-load-seeds-rb-into-the-test-database-without-breaking-factorygirl
+  def seed_data
+    require "#{Rails.root}/db/seeds.rb"
+  end
 end

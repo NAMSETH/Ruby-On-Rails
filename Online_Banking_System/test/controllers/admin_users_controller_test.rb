@@ -7,7 +7,7 @@ class AdminUsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_not is_admin_logged_in?
     assert_template 'admin_sessions/new'
-    post admin_login_url, params: { session: {email: "admin@gmail.com",
+    post admin_login_url, params: { session: {email: "admin1@gmail.com",
       password: '12345678'}}
     assert is_admin_logged_in?
     get new_admin_user_path
@@ -38,7 +38,7 @@ class AdminUsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_not is_admin_logged_in?
     assert_template 'admin_sessions/new'
-    post admin_login_url, params: { session: {email: "admin@gmail.com",
+    post admin_login_url, params: { session: {email: "admin1@gmail.com",
       password: '12345678'}}
     assert is_admin_logged_in?
     get admin_users_path
