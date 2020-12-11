@@ -108,5 +108,4 @@ class CustomersControllerTest < ActionDispatch::IntegrationTest
     get '/customers/2/delete'
     assert_redirected_to customers_path
   end
-
 end

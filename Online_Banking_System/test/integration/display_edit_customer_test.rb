@@ -3,7 +3,6 @@ require 'test_helper'
 class DisplayEditCustomerTest < ActionDispatch::IntegrationTest#
   test "Access customer details if admin is logged in" do
     get admin_users_url
-    assert_response :success
     assert_not is_admin_logged_in?
     post admin_login_url, params: { session: {email: "admin1@gmail.com", password: '12345678'}}
     follow_redirect!
@@ -17,7 +16,6 @@ class DisplayEditCustomerTest < ActionDispatch::IntegrationTest#
 
   test "Unable to access customer details if admin is not logged in" do
     get admin_users_url
-    assert_response :success
     assert_not is_admin_logged_in?
     get customers_url
     assert_redirected_to admin_login_url
