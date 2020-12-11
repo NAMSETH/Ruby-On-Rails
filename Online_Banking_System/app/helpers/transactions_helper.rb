@@ -61,9 +61,19 @@ module TransactionsHelper
 
   def getAccountName(transaction, sending)
     if sending
-      Account.find(transaction.recievingAccount_id).accountName
+      acc = Account.find(transaction.recievingAccount_id)
+      if !acc.nil?
+        acc.accountName
+      else
+        ""
+      end
     else
-      Account.find(transaction.sendingAccount_id).accountName
+      acc = Account.find(transaction.sendingAccount_id)
+      if !acc.nil?
+        acc.accountName
+      else
+        ""
+      end
     end
   end
 
