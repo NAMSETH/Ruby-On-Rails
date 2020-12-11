@@ -1,7 +1,7 @@
 class AccountsController < ApplicationController
-  include AccountsHelper
-    before_action :redirect_if_not_logged_in, only: [:index]
-    before_action :redirect_if_not_admin, only: [:new, :create]
+  include AccountsHelper, CustomerSessionHelper
+    before_action :redirect_if_not_admin_or_customer, only: [:index]
+    before_action :redirect_if_not_admin, only: [:new, :create, :show]
 
   def new
     @account = Account.new({:accountNumber => generateAccountNumber,
@@ -9,14 +9,19 @@ class AccountsController < ApplicationController
   end
 
   def create
-    @customer_account = Customer.find_by(:customerNumber => params[:customerNumber])
+    @customer_account = Customer.find_by(:customerNumber => params[:customerNumber].strip)
     @account = Account.new(account_params)
     @customer_account.accounts << @account
     if @account.save && generateTransactionHistory(@account)
-        redirect_to(accounts_path)
+        redirect_to(admin_users_path)
     else
       render('new')
     end
+  end
+
+  def show
+    @customer = Customer.find(params[:id])
+    @accounts = @customer.accounts
   end
 
   def index
@@ -25,11 +30,10 @@ class AccountsController < ApplicationController
   end
 
   def delete
-  end
-
-  def destroy
-    @account = Account.find_by(params[:id])
+    @account = Account.find(params[:id])
+    @customer = Customer.find_by(id: @account.customer_id)
     @account.destroy
+    redirect_to account_path(@customer)
   end
 
   def account_params

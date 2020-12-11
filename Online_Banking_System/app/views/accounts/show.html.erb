@@ -1,0 +1,40 @@
+<head>
+    <title>Accounts</title>
+</head>
+<body>
+  <br>
+  <h1>View Accounts</h1>
+  <hr>
+  <br>
+  <% if @accounts.empty? %>
+    <h2>Sorry! There are currently no accounts associated with the selected customer in the system!</h2>
+    <br>
+    <p>Add a new account <%= link_to 'here', new_account_path %></p>
+  <% else %>
+    <div style="height: 80%; width: 100%; overflow: scroll">
+      <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th>Account Number</th>
+            <th>Account Name</th>
+            <th>Currency</th>
+            <th>Balance</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @accounts.each do |account| %>
+          <tr>
+            <td><%= account.accountNumber %></td>
+            <td><%= account.accountName %></td>
+            <td><%= account.currency %></td>
+            <td><%= formatBalance(account) %></td>
+            <td><%= link_to 'Delete', delete_account_path(account), class: "btn btn-primary", style: "height:100%; margin: 1" %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+
+</body>
