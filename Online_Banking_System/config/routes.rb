@@ -18,14 +18,8 @@ Rails.application.routes.draw do
     end
   end
   resources :customers do
-    member do
-      get :delete
-    end
   end
   resources :accounts do
-    member do
-      get :delete
-    end
   end
 
   resources :transactions

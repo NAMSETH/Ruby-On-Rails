@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class DisplayEditCustomerTest < ActionDispatch::IntegrationTest#
+class DisplayEditCustomerTest < ActionDispatch::IntegrationTest
   test "Access customer details if admin is logged in" do
     get admin_users_url
     assert_not is_admin_logged_in?

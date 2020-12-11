@@ -89,14 +89,14 @@ class CustomersControllerTest < ActionDispatch::IntegrationTest
     post customer_login_url, params: { session: {email: "mary@gmail.com",
        password: '12345678'}}
     assert is_logged_in?
-    get '/customers/2/delete'
+    delete '/customers/2'
     assert_redirected_to admin_login_url
   end
 
   test "Unable to access customers/delete when not logged in as an admin" do
     get customer_login_url
     assert_not is_admin_logged_in?
-    get '/customers/2/delete'
+    delete '/customers/2'
     assert_redirected_to admin_login_url
   end
 
@@ -105,7 +105,7 @@ class CustomersControllerTest < ActionDispatch::IntegrationTest
     post admin_login_url, params: { session: {email: "admin1@gmail.com",
       password: '12345678'}}
       assert is_admin_logged_in?
-    get '/customers/2/delete'
+    delete '/customers/2'
     assert_redirected_to customers_path
   end
 end

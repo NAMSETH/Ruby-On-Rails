@@ -34,7 +34,7 @@ class AccountsController < ApplicationController
     @accounts = @customer.accounts
   end
 
-  def delete
+  def destroy
     @account = Account.find(params[:id])
     @customer = Customer.find_by(id: @account.customer_id)
     @account.destroy
