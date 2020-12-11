@@ -8,6 +8,8 @@
   <br>
   <% if @customers.empty? %>
   <h2>Sorry! There are currently no customers in the system!</h2>
+  <br>
+  <p>Add a customer <%= link_to 'here', new_customer_path %></p>
   <% else %>
   <div style="height: 80%; width: 100%; overflow: scroll">
     <table class="table table-striped">
@@ -28,8 +30,9 @@
           <td><%= customer.surname %></td>
           <td><%= customer.dob %></td>
           <td>
-            <%= link_to 'Edit', edit_customer_path(customer), class: "btn btn-primary", style: "height:100%; margin: 1%" %>
-            <%=  link_to 'Delete', delete_customer_path(customer), class: "btn btn-primary", style: "height:100%; margin: 1%"%>
+            <%= link_to 'Edit', edit_customer_path(customer), class: "btn btn-primary btn-block", style: "height:100%; margin: 1%" %>
+            <%=  link_to 'Delete', delete_customer_path(customer), class: "btn btn-primary btn-block", style: "height:100%; margin: 1%"%>
+            <%=  link_to 'Accounts', account_path(customer), class: "btn btn-primary btn-block", style: "height:100%; margin: 1%"%>
           </td>
         </tr>
         <% end %>

@@ -25,8 +25,7 @@ class TransactionsController < ApplicationController
         @transaction = Transaction.new({
           amount: payment_params[:amount].to_d, transactionNumber: payment_params[:transactionNumber],
           currency: payment_params[:currency], sendingAccount_id: payment_params[:sendingAccount_id],
-          recievingAccount_id: @id, transactionNumber: payment_params[:transactionNumber],
-          description: payment_params[:description], transactionDate: DateTime.now
+          recievingAccount_id: @id, description: payment_params[:description], transactionDate: DateTime.now
           })
           if @transaction.valid?
             if processPayment(@transaction)
