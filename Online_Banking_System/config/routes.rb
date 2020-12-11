@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
   root 'customer_session#new'
 
+  get '/customer/verify', to: 'customer_session#newVerification'
+  post '/customer/verify', to: 'customer_session#verification'
+
   get '/customer/login', to: 'customer_session#new'
   post '/customer/login', to: 'customer_session#create'
   delete '/customer/logout', to: 'customer_session#destroy'

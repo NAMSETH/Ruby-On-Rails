@@ -9,6 +9,7 @@ class CustomersController < ApplicationController
 
   def create
     @customer = Customer.new(customer_params)
+    @customer.verification = true
     if @customer.valid?
       @customer.save
       redirect_to(admin_users_path)
@@ -46,7 +47,7 @@ class CustomersController < ApplicationController
 
   def customer_params
     params.require(:customer).permit(:customerNumber,:forename, :surname,
-       :email, :phone, :email, :dob, :password, :password_confirmation)
+       :email, :phone, :email, :dob, :password, :password_confirmation, :verification)
   end
 
 end
