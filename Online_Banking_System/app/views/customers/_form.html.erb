@@ -5,4 +5,3 @@
  <%= f.date_select :dob, start_year: 1900, end_year: Time.now.year, label: "D.O.B" %>
  <%= f.password_field :password, label: "Password" %>
  <%= f.password_field :password_confirmation, label: "Password Confirmation" %>
- <%= f.select :verification, [['Active', true], ['Inactive', false]] , label: "Verification Enabled?" %>
