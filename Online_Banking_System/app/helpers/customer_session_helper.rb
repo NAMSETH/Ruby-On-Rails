@@ -17,12 +17,4 @@ module CustomerSessionHelper
     session.delete(:customer_id)
     @current_customer = nil
   end
-
-  def code_generate(mail)
-    email = mail
-    @code = rand 10000
-    CodeMailer.new_code(@code.to_s,email).deliver_now
-    return @code.to_s
-  end
-  
 end
