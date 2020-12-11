@@ -20,8 +20,12 @@ class AccountsController < ApplicationController
   end
 
   def show
-    @customer = Customer.find(params[:id])
-    @accounts = @customer.accounts
+    begin
+      @customer = Customer.find(params[:id])
+      @accounts = @customer.accounts
+    rescue ActiveRecord::RecordNotFound
+      redirect_to customers_path
+    end
   end
 
   def index
@@ -33,6 +37,8 @@ class AccountsController < ApplicationController
     @account = Account.find(params[:id])
     @customer = Customer.find_by(id: @account.customer_id)
     @account.destroy
+    transactions = Transaction.where(sendingAccount_id: @account.id).or(Transaction.where(recievingAccount_id: @account.id))
+    transactions.destroy_all
     redirect_to account_path(@customer)
   end
 
