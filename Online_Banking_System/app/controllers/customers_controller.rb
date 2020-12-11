@@ -40,6 +40,12 @@ class CustomersController < ApplicationController
 
   def delete
     @customer = Customer.find(params[:id])
+    accounts = @customer.accounts
+    accounts.each do |account|
+      transactions = Transaction.where(sendingAccount_id: account.id).or(Transaction.where(recievingAccount_id: account.id))
+      transactions.destroy_all
+    end
+    accounts.destroy_all
     @customer.destroy
     redirect_to customers_path
   end

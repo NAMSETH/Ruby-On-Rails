@@ -2,37 +2,50 @@
   <title>Payment</title>
 </head>
 <body>
-<div>
-  <br>
-  <h2>Transactions for <%= @account.accountName %> </h2>
-  <br>
-  <h5> <%= "Account Number: #{ @account.accountNumber }"%> </h5>
-  <h5> <%= "Current Balance: #{ formatBalance(@account) }"%> </h5>
-  <br><br>
-</div>
-<div style="height: 60%; overflow: scroll">
-  <table class="table table-striped">
-    <thead class="thead-dark">
-      <tr>
-        <th>Date</th>
-        <th>Account Name</th>
-        <th>Description</th>
-        <th>Amount</th>
-      </tr>
-    </thead>
-    <% @transactions.each do |transaction| %>
-    <tr>
-      <td> <%= transaction.transactionDate %> </td>
-      <td> <%= getAccountName(transaction, transaction.sendingAccount_id == @account.id) %> </td>
-      <td> <%= transaction.description %> </td>
-      <%  if transaction.sendingAccount_id == @account.id %>
-        <td style="color: red"> <%= "-#{formatAmount(transaction)}" %> </td>
-      <% else %>
-        <td style="color: green"> <%= "+#{formatAmount(transaction)}" %> </td>
-      <% end %>
-    </tr>
+  <div>
+    <br>
+    <h2>Transactions for <%= @account.accountName %> </h2>
+    <hr>
+    <br>
+    <h5> <%= "Account Number: #{ @account.accountNumber }"%> </h5>
+    <h5> <%= "Current Balance: #{ formatBalance(@account) }"%> </h5>
+    <br>
+    <hr>
+    <br>
+  </div>
+  <% if @transactions.empty? %>
+    <h2>Sorry! There are currently no transactions associated with the selected account!</h2>
+    <br>
+    <% if logged_in? %>
+        <p>Return to accounts <%= link_to 'here', accounts_path %></p>
+    <% else %>
+      <p>Return to accounts <%= link_to 'here', account_path(Customer.find(@account.customer_id)) %></p>
     <% end %>
-  </table>
-</div>
-<br>
+  <% else %>
+  <div style="height: 60%; overflow: scroll">
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th>Date</th>
+          <th>Account Name</th>
+          <th>Description</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <% @transactions.each do |transaction| %>
+      <tr>
+        <td> <%= transaction.transactionDate %> </td>
+        <td> <%= getAccountName(transaction, transaction.sendingAccount_id == @account.id) %> </td>
+        <td> <%= transaction.description %> </td>
+        <%  if transaction.sendingAccount_id == @account.id %>
+          <td style="color: red"> <%= "-#{formatAmount(transaction)}" %> </td>
+        <% else %>
+          <td style="color: green"> <%= "+#{formatAmount(transaction)}" %> </td>
+        <% end %>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+  <br>
+  <% end %>
 <body>

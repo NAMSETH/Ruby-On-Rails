@@ -29,7 +29,10 @@
             <td><%= account.accountName %></td>
             <td><%= account.currency %></td>
             <td><%= formatBalance(account) %></td>
-            <td><%= link_to 'Delete', delete_account_path(account), class: "btn btn-primary", style: "height:100%; margin: 1" %></td>
+            <td>
+              <%= link_to 'Delete', delete_account_path(account), class: "btn btn-primary", style: "height:100%; margin: 1" %>
+              <%= link_to 'Transactions', transactions_path(account_id: account.id), class: "btn btn-primary", style: "height:100%; margin: 1" %>
+            </td>
           </tr>
           <% end %>
         </tbody>
