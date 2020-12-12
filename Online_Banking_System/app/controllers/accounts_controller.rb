@@ -12,7 +12,8 @@ class AccountsController < ApplicationController
     @customer_account = Customer.find_by(:customerNumber => params[:customerNumber].strip)
     @account = Account.new(account_params)
     @customer_account.accounts << @account
-    if @account.save && generateTransactionHistory(@account)
+    if @account.valid? && generateTransactionHistory(@account)
+        @account.save
         redirect_to(admin_users_path)
     else
       render('new')
@@ -33,7 +34,7 @@ class AccountsController < ApplicationController
     @accounts = @customer.accounts
   end
 
-  def delete
+  def destroy
     @account = Account.find(params[:id])
     @customer = Customer.find_by(id: @account.customer_id)
     @account.destroy

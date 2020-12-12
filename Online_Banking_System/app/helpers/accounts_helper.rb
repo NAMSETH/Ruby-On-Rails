@@ -25,21 +25,23 @@ module AccountsHelper
       newTransaction = Transaction.new(sendingAccount_id: account.id,
         transactionNumber: generateTransactionNumber,
         transactionDate: randomTime,
-        recievingAccount_id: randomAccount.id, amount: randomAmount,
-        currency: randomCurrency, description: "Something")
+        recievingAccount_id: randomCompanyAccount.id, amount: randomAmount,
+        currency: randomCurrency)
         if newTransaction.valid? && processPayment(newTransaction)
           newTransaction.save
         end
     end
-    for j in 0..10 do
-      newTransaction = Transaction.new(recievingAccount_id: account.id,
-        transactionNumber: generateTransactionNumber,
-        transactionDate: randomTime,
-        sendingAccount_id: randomAccount.id, amount: randomAmount,
-        currency: randomCurrency, description: "Something")
-        if newTransaction.valid? && processPayment(newTransaction)
-          newTransaction.save
-        end
+    if(randomAccount(account) != nil)
+      for j in 0..2 do
+        newTransaction = Transaction.new(recievingAccount_id: account.id,
+          transactionNumber: generateTransactionNumber,
+          transactionDate: randomTime,
+          sendingAccount_id: randomAccount(account).id, amount: randomAmount,
+          currency: randomCurrency)
+          if newTransaction.valid? && processPayment(newTransaction)
+            newTransaction.save
+          end
+      end
     end
   end
 
@@ -53,8 +55,14 @@ module AccountsHelper
     rand(1..300)
   end
 
-  def randomAccount
-    list = Account.all
+  def randomCompanyAccount
+    list = Customer.find_by(customerNumber: 1).accounts
+    list.sample
+  end
+
+  def randomAccount(account)
+    #look for accounts that are not companies (they do not belong to customer of customerNumber 1) and that are not the new accont
+    list = Account.all.select do |a| a != account && !Customer.find_by(customerNumber: 1).accounts.include?(a) end
     list.sample
   end
 

@@ -1,7 +1,7 @@
 class CustomersController < ApplicationController
   include CustomersHelper
   before_action :redirect_if_not_admin_or_customer, only: [:edit, :update]
-  before_action :redirect_if_not_admin, only: [:index, :new, :create, :delete]
+  before_action :redirect_if_not_admin, only: [:index, :new, :create, :destroy]
 
   def new
     @customer = Customer.new({:customerNumber => generateCustomerNumber})
@@ -38,7 +38,7 @@ class CustomersController < ApplicationController
       @customers = Customer.all
   end
 
-  def delete
+  def destroy
     @customer = Customer.find(params[:id])
     accounts = @customer.accounts
     accounts.each do |account|

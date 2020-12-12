@@ -7,7 +7,7 @@ class CustomersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_not is_admin_logged_in?
     assert_template 'admin_sessions/new'
-    post admin_login_url, params: { session: {email: "admin@gmail.com",
+    post admin_login_url, params: { session: {email: "admin1@gmail.com",
       password: '12345678'}}
     assert_redirected_to admin_users_path
     get customers_path
@@ -54,7 +54,7 @@ class CustomersControllerTest < ActionDispatch::IntegrationTest
   test "Able to access customers/edit when logged in as an admin" do
     get admin_login_url
     assert_not is_admin_logged_in?
-    post admin_login_url, params: { session: {email: "admin@gmail.com",
+    post admin_login_url, params: { session: {email: "admin1@gmail.com",
       password: '12345678'}}
     get '/customers/2/edit'
     assert_template 'customers/edit'
@@ -63,7 +63,7 @@ class CustomersControllerTest < ActionDispatch::IntegrationTest
   test "Able to access customers/new when logged in as an admin" do
     get admin_login_url
     assert_not is_admin_logged_in?
-    post admin_login_url, params: { session: {email: "admin@gmail.com",
+    post admin_login_url, params: { session: {email: "admin1@gmail.com",
       password: '12345678'}}
     get '/customers/new'
     assert_template 'customers/new'
@@ -89,23 +89,23 @@ class CustomersControllerTest < ActionDispatch::IntegrationTest
     post customer_login_url, params: { session: {email: "mary@gmail.com",
        password: '12345678'}}
     assert is_logged_in?
-    get '/customers/2/delete'
+    delete '/customers/2'
     assert_redirected_to admin_login_url
   end
 
   test "Unable to access customers/delete when not logged in as an admin" do
     get customer_login_url
     assert_not is_admin_logged_in?
-    get '/customers/2/delete'
+    delete '/customers/2'
     assert_redirected_to admin_login_url
   end
 
   test "Able to access customers/delete when logged in as an admin" do
     get admin_login_url
-    post admin_login_url, params: { session: {email: "admin@gmail.com",
+    post admin_login_url, params: { session: {email: "admin1@gmail.com",
       password: '12345678'}}
       assert is_admin_logged_in?
-    get '/customers/2/delete'
+    delete '/customers/2'
     assert_redirected_to customers_path
   end
 end
